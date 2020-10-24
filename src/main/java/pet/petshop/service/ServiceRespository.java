@@ -1,4 +1,4 @@
-package pet.petshop.abc;
+package pet.petshop.service;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

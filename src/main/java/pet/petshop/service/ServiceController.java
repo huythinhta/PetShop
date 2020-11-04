@@ -14,8 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class ServiceController {
 	@Autowired
 	private ServiceDAO abc;
-	
-	@RequestMapping("/")
+	@RequestMapping("/Services")
 	public String viewHomePage(Model model) {
 		List<Services> listServices = abc.listALl();
 		model.addAttribute("listServices",listServices);

@@ -1,4 +1,4 @@
-package pet.petshop.abc;
+package pet.petshop.service;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;

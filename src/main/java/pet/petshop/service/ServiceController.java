@@ -1,4 +1,4 @@
-package pet.petshop.abc;
+package pet.petshop.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +18,7 @@ public class ServiceController {
 	public String viewHomePage(Model model) {
 		List<Services> listServices = abc.listALl();
 		model.addAttribute("listServices",listServices);
-		return "index";
+		return "index2";
 	}
 	
 	@RequestMapping("/new")

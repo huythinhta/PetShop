@@ -1,8 +1,11 @@
-package pet.petshop.service;
+package pet.petshop.dao;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import pet.petshop.entity.Services;
+import pet.petshop.repository.ServiceRespository;
 @Service
 public class ServiceDAO {
 	@Autowired

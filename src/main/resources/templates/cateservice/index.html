@@ -23,8 +23,12 @@
 				<tr th:each="services : ${listservicecategories}">
 					<td th:text="${services.id}">Service id</td>
 					<td th:text="${services.name}">name</td>
-					
-					
+					<td>
+						<a th:href="@{'/editservicecate/' + ${services.id}}">edit</a>
+					</td>
+					<td>
+						<a th:href="@{'/deleteservicecate/' + ${services.id}}">delte</a>
+					</td>				
 				</tr>
 			</tbody>
 		</table>

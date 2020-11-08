@@ -6,10 +6,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class servicecategories {
+public class Servicecategories {
 	private Integer id;
 	private String name;
-	public servicecategories() {
+	public Servicecategories() {
 		super();
 		// TODO Auto-generated constructor stub
 	}

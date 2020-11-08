@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import pet.petshop.entity.servicecategories;
+import pet.petshop.entity.Servicecategories;
 import pet.petshop.repository.servicecategoriesRespository;
 
 @Service
@@ -13,16 +13,16 @@ public class servicecategoriesService {
 	@Autowired
 	private servicecategoriesRespository spo;
 	
-	public List<servicecategories> listAll(){
+	public List<Servicecategories> listAll(){
 		return spo.findAll();
 	}
 	
-	public void save(servicecategories servicecategories)
+	public void save(Servicecategories servicecategories)
 	{
 		spo.save(servicecategories);
 	}
 	
-	public servicecategories get(Integer id)
+	public Servicecategories get(Integer id)
 	{
 		return spo.findById(id).get();
 	}

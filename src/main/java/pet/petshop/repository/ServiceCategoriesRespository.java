@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import pet.petshop.entity.Servicecategories;
 
-public interface ServicecategoriesRespository extends JpaRepository<Servicecategories, Integer> {
+public interface ServiceCategoriesRespository extends JpaRepository<Servicecategories, Integer> {
 
 }

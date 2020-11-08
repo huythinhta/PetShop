@@ -17,29 +17,29 @@ import pet.petshop.entity.Services;
 public class ServiceController {
 	@Autowired
 	private ServiceDAO abc;
-	@RequestMapping("/Services")
+	@RequestMapping("/services")
 	public String viewHomePage(Model model) {
 		List<Services> listServices = abc.listALl();
 		model.addAttribute("listServices",listServices);
-		return "index2";
+		return "service/index";
 	}
 	
-	@RequestMapping("/new")
+	@RequestMapping("/newservices")
 	public String showNewServiceForm(Model model) {
 		Services services = new Services();
 		model.addAttribute("services",services);
-		return "new_service";
+		return "service/new_service";
 	}
 	
 	@RequestMapping(value="/save", method = RequestMethod.POST)
 		public String saveService(@ModelAttribute("services") Services services)
 		{
 		abc.save(services);
-		return "redirect:/";
+		return "redirect:/services";
 }
 	@RequestMapping("/edit/{id}")
 	public ModelAndView showEditServiceForm(@PathVariable(name = "id") int id) {
-		ModelAndView mav = new ModelAndView("edit_services");
+		ModelAndView mav = new ModelAndView("service/edit_services");
 		Services services= abc.get(id);
 		mav.addObject("services",services);
 		

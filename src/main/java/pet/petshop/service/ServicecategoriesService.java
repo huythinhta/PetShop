@@ -6,12 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import pet.petshop.entity.Servicecategories;
-import pet.petshop.repository.servicecategoriesRespository;
+import pet.petshop.repository.ServicecategoriesRespository;
 
 @Service
-public class servicecategoriesService {
+public class ServicecategoriesService {
 	@Autowired
-	private servicecategoriesRespository spo;
+	private ServicecategoriesRespository spo;
 	
 	public List<Servicecategories> listAll(){
 		return spo.findAll();

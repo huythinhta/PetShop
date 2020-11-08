@@ -10,12 +10,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import pet.petshop.entity.Servicecategories;
-import pet.petshop.service.servicecategoriesService;
+import pet.petshop.service.ServicecategoriesService;
 
 @Controller
-public class servicecategoriesController {
+public class ServicecategoriesController {
 	@Autowired
-	private servicecategoriesService sepo;
+	private ServicecategoriesService sepo;
 	
 	@RequestMapping("/servicecategories")
 	public String viewHomePage(Model model)

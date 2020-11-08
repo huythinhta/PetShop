@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import pet.petshop.dao.ServiceDAO;
 import pet.petshop.entity.Services;
+import pet.petshop.service.ServiceServices;
 
 @Controller
 public class ServiceController {
 	@Autowired
-	private ServiceDAO abc;
+	private ServiceServices abc;
 	@RequestMapping("/services")
 	public String viewHomePage(Model model) {
 		List<Services> listServices = abc.listALl();

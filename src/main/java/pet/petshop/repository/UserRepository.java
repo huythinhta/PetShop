@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import pet.petshop.entity.User;
 
+
 @Repository
 public interface UserRepository extends JpaRepository<User, Long>{
 	User findByEmail(String email);

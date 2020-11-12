@@ -1,21 +1,31 @@
 package pet.petshop.service;
 
-import org.springframework.stereotype.Component;
-import pet.petshop.entity.Productcategories;
-
 import java.util.List;
 
-@Component
-public interface ProductCategoryService {
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-    List<Productcategories> getAll();
+import pet.petshop.entity.Productcategories;
+import pet.petshop.repository.ProductCategoryRepository;
 
-    Productcategories save(Productcategories pc);
-
-    Productcategories update(Productcategories pc);
-
-    Productcategories findById(Integer id);
-
-    void delete(Integer id);
-
+@Service
+public class ProductCategoryService {
+	@Autowired
+	private ProductCategoryRepository pcpo;
+	
+	public List<Productcategories> listALL(){
+		return pcpo.findAll();
+	}
+	
+	public void save(Productcategories productcategories) {
+		pcpo.save(productcategories);
+	}
+	
+	public Productcategories get(Integer id) {
+		return pcpo.findById(id).get();
+	}
+	
+	public void delete(Integer id) {
+		pcpo.deleteById(id);
+	}
 }

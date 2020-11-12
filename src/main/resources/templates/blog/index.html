@@ -8,7 +8,7 @@
 <body>
 	<div align="center">
 		<h1>Blog Manager</h1>
-		<a href="/newblog">Create new Service</a>
+		<a href="/newblog">Create new Blog</a>
 		<table border="1">
 			<thead>
 				<tr>
@@ -34,7 +34,7 @@
 						<a th:href="@{'/editblog/' + ${blog.id}}">edit</a>
 					</td>
 					<td>
-						<a th:href="@{'/deleteblog/' + ${blog.id}}">delte</a>
+						<a th:href="@{'/deleteblog/' + ${blog.id}}">delete</a>
 					</td>				
 				</tr>
 			</tbody>

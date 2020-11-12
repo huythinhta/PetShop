@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>New Product</title>
+</head>
+<body>
+	<div align="center">
+		<h1>New Product</h1>
+		<br/>
+		<form action="#" th:action="@{/saveproduct}" th:object="${product}" method="post">
+			<table border="0">
+				<tr>
+					<td>id cate</td>
+					<td><input type="number" th:field="*{cate}"   /></td>
+				</tr>
+				<tr>
+					<td>Name</td>
+					<td><input type="text" th:field="*{name}" /></td>
+				</tr>
+				<tr>
+					<td>Brand</td>
+					<td><input type="text" th:field="*{brand}" /></td>
+				</tr>
+				<tr>
+					<td>Images</td>
+					<td><input type="text" th:field="*{images}" /></td>
+				</tr>
+				<tr>
+					<td>Status</td>
+					<td><input type="checkbox" th:field="*{status}" /></td>
+				</tr>
+				<tr>
+					<td>price</td>
+					<td><input type="text" th:field="*{price}" /></td>
+				</tr>
+				<tr>
+					<td>discount</td>
+					<td><input type="text" th:field="*{discount}"></input></td>
+				</tr>
+				
+				<tr>
+					<td><button type="submit">Save</button></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</body>
+</html>

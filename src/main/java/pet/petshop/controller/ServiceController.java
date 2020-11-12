@@ -21,14 +21,14 @@ public class ServiceController {
 	public String viewHomePage(Model model) {
 		List<Services> listServices = abc.listALl();
 		model.addAttribute("listServices",listServices);
-		return "service/index1";
+		return "service/index";
 	}
 	
 	@RequestMapping("/newservices")
 	public String showNewServiceForm(Model model) {
 		Services services = new Services();
 		model.addAttribute("services",services);
-		return "service/new_service1";
+		return "service/new_service";
 	}
 	
 	@RequestMapping(value="/save", method = RequestMethod.POST)
@@ -39,7 +39,7 @@ public class ServiceController {
 }
 	@RequestMapping("/edit/{id}")
 	public ModelAndView showEditServiceForm(@PathVariable(name = "id") int id) {
-		ModelAndView mav = new ModelAndView("service/edit_services1");
+		ModelAndView mav = new ModelAndView("service/edit_services");
 		Services services= abc.get(id);
 		mav.addObject("services",services);
 		

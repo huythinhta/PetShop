@@ -15,7 +15,7 @@ public class Blog {
 	private Integer cate;
 	private String title;
 	private Date datepost;
-	private String username;
+	private String email;
 	private String images;
 	private String content;
 	public Blog() {
@@ -48,11 +48,12 @@ public class Blog {
 	public void setDatepost(Date datepost) {
 		this.datepost = datepost;
 	}
-	public String getUsername() {
-		return username;
+	
+	public String getEmail() {
+		return email;
 	}
-	public void setUsername(String username) {
-		this.username = username;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	public String getImages() {
 		return images;

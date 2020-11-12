@@ -24,14 +24,14 @@ public class BlogCategoriesController {
 	public String viewHomePage(Model model) {
 		List<Blogcategories> blogcategories= bcpo.listALL();
 		model.addAttribute("blogcategories",blogcategories);
-		return "blog/blogcategories";
+		return "blog/blogcate_index";
 	}
 	
 	@RequestMapping("/newblogcategories")
 	public String newBlogCategoriesForm(Model model) {
 		Blogcategories blogcategories = new Blogcategories();
 		model.addAttribute("blogcategories",blogcategories);
-		return "blog/newblogcategories";
+		return "blog/blogcate_add";
 	}
 	
 	@RequestMapping(value = "/saveblogcategories",method = RequestMethod.POST)
@@ -42,7 +42,7 @@ public class BlogCategoriesController {
 	
 	@RequestMapping("/editblogcategories/{id}")
 	public ModelAndView showEditBlogCategories(@PathVariable(name = "id")Integer id) {
-		ModelAndView mav = new ModelAndView("blog/editblogcategories");
+		ModelAndView mav = new ModelAndView("blog/blogcate_edit");
 		Blogcategories blogcategories= bcpo.get(id);
 		mav.addObject("blogcategories", blogcategories);
 		return mav;

@@ -23,14 +23,14 @@ public class BlogController {
 	public String viewHomePage(Model model) {
 		List<Blog> listblog=bs.listALL();
 		model.addAttribute("listblog",listblog);
-		return "blog/index";
+		return "blog/blog_index";
 	}
 	
 	@RequestMapping("/newblog")
 	public String showNewBlogForm(Model model) {
 		Blog blog = new Blog();
 		model.addAttribute("blog",blog);
-		return "blog/newblog";
+		return "blog/blog_add";
 	}
 	
 	@RequestMapping(value = "/saveblog",method = RequestMethod.POST)
@@ -41,7 +41,7 @@ public class BlogController {
 	
 	@RequestMapping("/editblog/{id}")
 	public ModelAndView showEditBlog(@PathVariable(name = "id")Integer id) {
-		ModelAndView mav = new ModelAndView("blog/editblog");
+		ModelAndView mav = new ModelAndView("blog/blog_edit");
 		Blog blog = bs.get(id);
 		mav.addObject("blog", blog);
 		return mav;

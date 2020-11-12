@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.w3.org/1999/xhtml"
+	layout:decorate="~{fragments/admin/main_layout}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<a href="/new">Create New Product</a>
+	<table>
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Email</th>
+				<th>Password</th>
+				<th>Role</th>
+				<th>Action</th>
+				<th></th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<tr th:each="user : ${users}">
+				<td th:text="${user.id}">id</td>
+				<td th:text="${user.email}">email</td>
+				<td th:text="${user.password}">password</td>
+				<td th:text="${user.role}">role</td>
+				<td><a th:href="@{'/edit/' + ${user.id}}">Edit</a>
+				<td>
+				<td><a th:href="@{'/delete/' + ${user.id}}">delete</a></td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

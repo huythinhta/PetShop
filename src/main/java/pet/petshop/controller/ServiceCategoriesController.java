@@ -42,7 +42,7 @@ public class ServiceCategoriesController {
 		}
 	@RequestMapping("/editservicecate/{id}")
 		public ModelAndView showEditServiceCategoriesForm(@PathVariable(name="id") Integer id) {
-			ModelAndView mav = new ModelAndView("cateservice/edit_servicecategories");
+			ModelAndView mav = new ModelAndView("cateservice/edit_servicescategories1");
 			Servicecategories servicecategories = sepo.get(id);
 			mav.addObject("servicecategories",servicecategories);
 			

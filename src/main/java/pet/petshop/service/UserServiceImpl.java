@@ -14,7 +14,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import pet.petshop.dto.UserRegistrationDto;
-import pet.petshop.entity.Role;
 import pet.petshop.entity.User;
 import pet.petshop.repository.UserRepository;
 
@@ -31,18 +30,9 @@ public class UserServiceImpl implements UserService{
 		super();
 		this.userRepository = userRepository;
 	}
-<<<<<<< HEAD
 	public User Regis(User registrationDto) {
 		User user = new User(registrationDto.getEmail(), 
 				passwordEncoder.encode(registrationDto.getPassword()), "ROLE_USER");
-=======
-
-	@Override
-	public User save(UserRegistrationDto registrationDto) {
-		User user = new User(registrationDto.getFirstName(), 
-				registrationDto.getLastName(), registrationDto.getEmail(),
-				passwordEncoder.encode(registrationDto.getPassword()), Arrays.asList(new Role("ROLE_USER")));
->>>>>>> 4232a0a1159f910c5caf19b17da33bc2d0cb3fb0
 		
 		return userRepository.save(user);
 	}
@@ -53,10 +43,10 @@ public class UserServiceImpl implements UserService{
 		if(user == null) {
 			throw new UsernameNotFoundException("Invalid username or password.");
 		}
-		return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), mapRolesToAuthorities(user.getRoles()));		
+		SimpleGrantedAuthority authority = new SimpleGrantedAuthority(user.getRole());
+		return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), Arrays.asList(authority));		
 	}
 	
-<<<<<<< HEAD
 	
 	public List<User> listAll(){
 		return userRepository.findAll();
@@ -75,10 +65,5 @@ public class UserServiceImpl implements UserService{
 		userRepository.deleteById(id);
 	}
 	
-=======
-	private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Role> roles){
-		return roles.stream().map(role -> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toList());
-	}
->>>>>>> 4232a0a1159f910c5caf19b17da33bc2d0cb3fb0
 	
 }

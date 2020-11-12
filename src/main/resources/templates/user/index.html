@@ -55,16 +55,7 @@
 										<th></th>
 									</tr>
 								</thead>
-								<tfoot>
-									<tr>
-										<th>Id</th>
-										<th>Email</th>
-										<th>Password</th>
-										<th>Role</th>
-										<th>Action</th>
-										<th></th>
-									</tr>
-								</tfoot>
+								
 								<tbody>
 									<tr th:each="user : ${users}">
 										<td th:text="${user.id}">id</td>

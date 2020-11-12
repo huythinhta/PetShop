@@ -3,31 +3,15 @@ use Petshop;
 -- User--------------------
 create table user(
 	id int auto_increment primary key,
-    email varchar(255),
-    password varchar(100),
+    email varchar(255) not null unique,
+    password varchar(100) not null,
     role varchar(50)
 );
--- insert Account
-insert into  Account(username,password,role,fullname,address,phone,email  ) 
-values('caoboilangtu','nguyenhuyhoang',0,'Nguyen Gia Bao','45 Co Giang quan Phu Nhuan','0753651156','caoboilangtu@gmail.com' );
-insert into  Account(   username,password,role,fullname,address,phone,email  ) 
-values('chauxinhgai','hotranbaochau',1,'Ho Tran Bao Chau','64 An Nhon'   ,'038009424','chauhtbps08771@fpt.edu.vn' );
-insert into  Account(   username,password,role,fullname,address,phone,email  ) 
-values('thinhdeptrai','tahuythinh',1,'Ta Huy Thinh','64 An Nhon'   ,'038009425','thinhthps08775@fpt.edu.vn' );
-insert into  Account(   username,password,role,fullname,address,phone,email  ) 
-values('minhdeptrai','nguyenhoangminh',1,'Nguyen Hoang Minh','64 An Nhon'   ,'038009423','minhnhps08776@fpt.edu.vn' );
-insert into  Account(   username,password,role,fullname,address,phone,email  ) 
-values('phongdeptrai','nguyenquocphong',1,'Nguyen Quoc Phong','64 An Nhon'   ,'038009425','phongnqps08774@fpt.edu.vn' );
-insert into  Account(   username,password,role,fullname,address,phone,email  ) 
-values('hoangdeptrai','nguyenhuyhoang',1,'Nguyen Huy Hoang','64 An Nhon'   ,'0857752027','hoangnhps08785@fpt.edu.vn' );
-insert into  Account(   username,password,role,fullname,address,phone,email  ) 
-values('dogilypetshop','nguyenhuyhoang',0,'Vo Viet Linh','96 Bach Dang quan Binh Thanh'   ,'0916299911','dogilypetshop@gmail.com' );
-insert into  Account(   username,password,role,fullname,address,phone,email  ) 
-values('vovietlinh','nguyenhuyhoang',0,'Vo Viet Linh','866 Bach Dang quan Binh Thanh'   ,'0916299911','vovietlinh@gmail.com' );
-insert into  Account(   username,password,role,fullname,address,phone,email  ) 
-values('thanhlongdev','vothanhlong',0,'Vo Thanh Long','Tay Ninh'   ,'0789120352','thanhlongdev12@gmail.com' );
-insert into  Account(   username,password,role,fullname,address,phone,email  ) 
-values('kehuydiet','nguyenhuyhoang',0,'Nguyen Gia Huy','551 Ha Huy Giap quan 12'   ,'0125221423','kehuydiet@gmail.com' );
+insert into user values('1', 'phong', '$2a$10$SArPnBixTLjETiKuqUl8We1lhkrmx5OvmoI/GPqXllEixq13m0Pga', 'ROLE_USER');-- pass là 123 cho tất cả
+insert into user values('2', 'chau', '$2a$10$oSZCbUv6MJocYSj13griJely3vD7Q5niyeVUlbCO7njCfFxzbeQye', 'ROLE_USER');
+insert into user values('3', 'hoang', '$2a$10$qUmoYzq.ryjO.vj8gT5Gvu2uBLGRY97a5eMg/vp08jVfp6.THHzta', 'ROLE_USER');
+insert into user values('4', 'minh', '$2a$10$btFJx8zlfGrgED0qGb.QZeDVqHSjeyo9PClrDD3ZPgQv9pEME0dWG', 'ROLE_USER');
+insert into user values('5', 'thinh', '$2a$10$p/9gNp9/dHSher9UeNRRN.x/S4uNU2/yHHckmJzgtrJqQffBO4zS.', 'ROLE_USER');
 -- Product----------------------
 create table ProductCategories
 (
@@ -129,17 +113,17 @@ create table Bill
 (
 	id int auto_increment primary key, -- mã hoá đơn
 	date date NOT NULL default now(), -- ngày xuất hoá đơn
-	   username varchar(20) not null, -- người mua hàng
+	userid int not null, -- người mua hàng
 	status int not null default 0,-- 0 Là đang chờ xử lý, 1 là đang chuyển hàng, 2 là đã nhận hàng và thanh toán
 	totalprice int default 0, -- tổng tiền
-    constraint b_fk foreign key (   username) references Account(   username)
+    constraint b_fk foreign key (userid) references user(id)
 );
 -- insert Bill
-insert into Bill (username) values("chauxinhgai");
-insert into Bill (username) values("minhdeptrai");
-insert into Bill (username) values("thinhdeptrai");
-insert into Bill (username) values("phongdeptrai");
-insert into Bill (username) values("hoangdeptrai");
+insert into Bill (userid) values(1);
+insert into Bill (userid) values(2);
+insert into Bill (userid) values(3);
+insert into Bill (userid) values(4);
+insert into Bill (userid) values(5);
 create table BillInfo
 (
 	id int auto_increment primary key, -- mã hoá đơn chi tiết
@@ -261,30 +245,30 @@ Create table Blog
 	cate int not null,-- mã loại blog
 	title nvarchar(50) not null, -- tiêu đề
 	datepost Datetime default NOW(), -- ngày đăng
-	   username varchar(20) not null,-- tài khoản đăng
+	userid int not null,-- tài khoản đăng
 	images nvarchar(100) not null, -- hình ảnh
 	content nvarchar(2000) not null, -- nội dung
 	constraint b_bc_fk foreign key (cate) references BlogCategories(id),
-    constraint b_ac_fk foreign key (   username) references Account(   username)
+    constraint b_ac_fk foreign key (userid) references user(id)
 );
 -- insert blog
-insert into Blog(id,cate,title,   username,images,content) 
-values(1,1,'Cach cham soc cho poodle sau ShopShopBlogsinh','hoangdeptrai','hinh.jpg','Test');
-insert into Blog(id,cate,title,   username,images,content) 
-values(2,1,'Thoi diem nao thi can sieu am cho mang thai','hoangdeptrai','hinh.jpg','Test');
-insert into Blog(id,cate,title,   username,images,content) 
-values(3,1,'Cach dieu tri benh ung thu mui o cho','hoangdeptrai','hinh.jpg','Test');
-insert into Blog(id,cate,title,   username,images,content) 
-values(4,1,'Cho bi ho khi van dong manh','hoangdeptrai','hinh.jpg','Test');
-insert into Blog(id,cate,title,   username,images,content) 
-values(5,1,'Cho corgi: nhung dieu thu vi ve chung','hoangdeptrai','hinh.jpg','Test');
-insert into Blog(id,cate,title,   username,images,content) 
-values(6,1,'Nhung dieu can biet khi thien cho duc','hoangdeptrai','hinh.jpg','Test');
-insert into Blog(id,cate,title,   username,images,content) 
-values(7,1,'Cho chihuahua: nhung su that dang ngac nhien','hoangdeptrai','hinh.jpg','Test');
-insert into Blog(id,cate,title,   username,images,content) 
-values(8,1,'Cho bichon: nhung dieu ma ban chua tung duoc biet','hoangdeptrai','hinh.jpg','Test');
-insert into Blog(id,cate,title,username,images,content) 
-values(9,1,'Shiba-inu chu co den tu xu phu tang','hoangdeptrai','hinh.jpg','Test');
-insert into Blog(id,cate,title,username,images,content) 
-values(10,1,'Poodle co bao nhieu loaij khac nhau','hoangdeptrai','hinh.jpg','Test');
+insert into Blog(id,cate,title,userid,images,content) 
+values(1,1,'Cach cham soc cho poodle sau ShopShopBlogsinh',1,'hinh.jpg','Test');
+insert into Blog(id,cate,title,userid,images,content) 
+values(2,1,'Thoi diem nao thi can sieu am cho mang thai',2,'hinh.jpg','Test');
+insert into Blog(id,cate,title,userid,images,content) 
+values(3,1,'Cach dieu tri benh ung thu mui o cho',3,'hinh.jpg','Test');
+insert into Blog(id,cate,title,userid,images,content) 
+values(4,1,'Cho bi ho khi van dong manh',4,'hinh.jpg','Test');
+insert into Blog(id,cate,title,userid,images,content) 
+values(5,1,'Cho corgi: nhung dieu thu vi ve chung',5,'hinh.jpg','Test');
+insert into Blog(id,cate,title,userid,images,content) 
+values(6,1,'Nhung dieu can biet khi thien cho duc',1,'hinh.jpg','Test');
+insert into Blog(id,cate,title,userid,images,content) 
+values(7,1,'Cho chihuahua: nhung su that dang ngac nhien',2,'hinh.jpg','Test');
+insert into Blog(id,cate,title,userid,images,content) 
+values(8,1,'Cho bichon: nhung dieu ma ban chua tung duoc biet',3,'hinh.jpg','Test');
+insert into Blog(id,cate,title,userid,images,content) 
+values(9,1,'Shiba-inu chu co den tu xu phu tang',4,'hinh.jpg','Test');
+insert into Blog(id,cate,title,userid,images,content) 
+values(10,1,'Poodle co bao nhieu loaij khac nhau',5,'hinh.jpg','Test');

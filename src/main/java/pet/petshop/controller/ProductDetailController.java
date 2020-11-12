@@ -25,7 +25,7 @@ public class ProductDetailController {
 	public String viewHomePage(Model model) {
 		List<Productdetail> listdetail=pds.listALL();
 		model.addAttribute("listdetail",listdetail);
-		return "product/index";
+		return "product/index_productdetail";
 	}
 	
 	@RequestMapping("/addproductdetail")

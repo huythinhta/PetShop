@@ -15,7 +15,7 @@ import pet.petshop.entity.User;
 import pet.petshop.service.UsersService;
 
 @Controller
-@RequestMapping("/User")
+//@RequestMapping("/User")
 public class UserController {
 	@Autowired
 	private UsersService us;
@@ -28,26 +28,32 @@ public class UserController {
 	}
 	
 	@RequestMapping("/new")
-	public String showNewProductPage(Model model) {
+	public String showNewUserPage(Model model) {
 	    User user = new User();
 	    model.addAttribute("user", user);
 	     
 	    return "user/new";
 	}
 	
-	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	public String saveProduct(@ModelAttribute("user") User user) {
+	@RequestMapping(value = "/saveUser", method = RequestMethod.POST)
+	public String saveUser(@ModelAttribute("user") User user) {
 	    us.save(user);
 	     
 	    return "redirect:/";
 	}
 	
-	@RequestMapping("/edit/{id}")
-	public ModelAndView showEditProductPage(@PathVariable(name = "id") int id) {
+	@RequestMapping("/editUser/{id}")
+	public ModelAndView showEditUserPage(@PathVariable(name = "id") int id) {
 	    ModelAndView mav = new ModelAndView("edit_user");
 	    User user = us.get(id);
 	    mav.addObject("user", user);
 	     
 	    return mav;
+	}
+	
+	@RequestMapping("/deleteUser/{id}")
+	public String deleteProduct(@PathVariable(name = "id") int id) {
+	    us.delete(id);
+	    return "redirect:/";       
 	}
 }

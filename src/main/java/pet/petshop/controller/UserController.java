@@ -20,7 +20,7 @@ public class UserController {
 	@Autowired
 	private UsersService us;
 	
-	@RequestMapping("/")
+	@RequestMapping("/user")
 	public String index(Model model) {
 		List<User> list = us.listAll();
 		model.addAttribute("users",list);

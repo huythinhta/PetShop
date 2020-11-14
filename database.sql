@@ -129,37 +129,36 @@ create table BillInfo
 	id int auto_increment primary key, -- mã hoá đơn chi tiết
 	idBill int NOT NULL, -- mã hoá đơn
 	idproduct int NOT NULL, -- mã sản phẩm
-	CountItem int NOT NULL default 0, -- số lượng sản phẩm
-    price int default 0, -- giá
+	countItem int NOT NULL default 0, -- số lượng sản phẩm
     constraint bi_b_fk foreign key (idBill) references Bill(id),
     constraint bi_p_fk foreign key (idproduct) references Product(id)
 );
 -- insert BillInfo
-insert into BillInfo (idBill,idproduct,price) values(1,1,"445000");
-insert into BillInfo (idBill,idproduct,price) values(1,2,"32000");
-insert into BillInfo (idBill,idproduct,price) values(1,3,"300000");
-insert into BillInfo (idBill,idproduct,price) values(1,4,"200000");
-insert into BillInfo (idBill,idproduct,price) values(1,5,"400000");
+insert into BillInfo (idBill,idproduct,countItem) values(1,1,1);
+insert into BillInfo (idBill,idproduct,countItem) values(1,2,2);
+insert into BillInfo (idBill,idproduct,countItem) values(1,3,3);
+insert into BillInfo (idBill,idproduct,countItem) values(1,4,2);
+insert into BillInfo (idBill,idproduct,countItem) values(1,5,1);
 ---
-insert into BillInfo (idBill,idproduct,price) values(2,2,"32000");
-insert into BillInfo (idBill,idproduct,price) values(2,1,"32000");
-insert into BillInfo (idBill,idproduct,price) values(2,3,"300000");
-insert into BillInfo (idBill,idproduct,price) values(2,4,"200000");
-insert into BillInfo (idBill,idproduct,price) values(2,5,"400000");
+insert into BillInfo (idBill,idproduct,countItem) values(2,2,2);
+insert into BillInfo (idBill,idproduct,countItem) values(2,1,3);
+insert into BillInfo (idBill,idproduct,countItem) values(2,3,4);
+insert into BillInfo (idBill,idproduct,countItem) values(2,4,3);
+insert into BillInfo (idBill,idproduct,countItem) values(2,5,2);
 ------
-insert into BillInfo (idBill,idproduct,price) values(3,3,"300000");
-insert into BillInfo (idBill,idproduct,price) values(3,6,"120000");
-insert into BillInfo (idBill,idproduct,price) values(3,7,"320000");
-insert into BillInfo (idBill,idproduct,price) values(3,8,"255000");
-insert into BillInfo (idBill,idproduct,price) values(3,10,"250000");
+insert into BillInfo (idBill,idproduct,countItem) values(3,3,4);
+insert into BillInfo (idBill,idproduct,countItem) values(3,6,4);
+insert into BillInfo (idBill,idproduct,countItem) values(3,7,3);
+insert into BillInfo (idBill,idproduct,countItem) values(3,8,2);
+insert into BillInfo (idBill,idproduct,countItem) values(3,10,2);
 -----------
-insert into BillInfo (idBill,idproduct,price) values(4,4,"200000");
-insert into BillInfo (idBill,idproduct,price) values(5,5,"400000");
-insert into BillInfo (idBill,idproduct,price) values(1,6,"120000");
-insert into BillInfo (idBill,idproduct,price) values(2,7,"320000");
-insert into BillInfo (idBill,idproduct,price) values(3,8,"600000");
-insert into BillInfo (idBill,idproduct,price) values(4,9,"255000");
-insert into BillInfo (idBill,idproduct,price) values(5,10,"600000");
+insert into BillInfo (idBill,idproduct,countItem) values(4,4,5);
+insert into BillInfo (idBill,idproduct,countItem) values(5,5,5);
+insert into BillInfo (idBill,idproduct,countItem) values(1,6,3);
+insert into BillInfo (idBill,idproduct,countItem) values(2,7,4);
+insert into BillInfo (idBill,idproduct,countItem) values(3,8,2);
+insert into BillInfo (idBill,idproduct,countItem) values(4,9,1);
+insert into BillInfo (idBill,idproduct,countItem) values(5,10,1);
 -- Service--------------------
 create table ServiceCategories
 (

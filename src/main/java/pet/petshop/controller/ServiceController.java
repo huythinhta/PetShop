@@ -21,34 +21,34 @@ public class ServiceController {
 	public String viewHomePage(Model model) {
 		List<Services> listServices = abc.listALl();
 		model.addAttribute("listServices",listServices);
-		return "service/index";
+		return "service/index1";
 	}
 	
 	@RequestMapping("/newservices")
 	public String showNewServiceForm(Model model) {
 		Services services = new Services();
 		model.addAttribute("services",services);
-		return "service/new_service";
+		return "service/new_service1";
 	}
 	
-	@RequestMapping(value="/save", method = RequestMethod.POST)
+	@RequestMapping(value="/saveservice", method = RequestMethod.POST)
 		public String saveService(@ModelAttribute("services") Services services)
 		{
 		abc.save(services);
 		return "redirect:/services";
 }
-	@RequestMapping("/edit/{id}")
+	@RequestMapping("/editservice/{id}")
 	public ModelAndView showEditServiceForm(@PathVariable(name = "id") int id) {
-		ModelAndView mav = new ModelAndView("service/edit_services");
+		ModelAndView mav = new ModelAndView("service/edit_services1");
 		Services services= abc.get(id);
 		mav.addObject("services",services);
 		
 		return mav;
 	}
 	
-	@RequestMapping("/delete/{id}")
+	@RequestMapping("/deleteservice/{id}")
 	public String delteteServices(@PathVariable(name="id") Integer id) {
 		abc.delete(id);
-		return "redirect:/";
+		return "redirect:/services";
 	}
 }

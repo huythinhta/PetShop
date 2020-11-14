@@ -1,24 +1,32 @@
 package pet.petshop.service;
 
 import java.util.List;
-import org.springframework.stereotype.Component;
-import pet.petshop.dto.ProductDto;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import pet.petshop.entity.Product;
-import pet.petshop.entity.Productdetail;
+import pet.petshop.repository.ProductRespository;
 
-@Component
-public interface ProductService {
 
-  List<Product> getAll();
-
-  Product save(ProductDto dto);
-
-  Product update(ProductDto sto);
-
-  Productdetail getInfoDetailById(Integer id);
-
-  Product getDetailById(Integer id);
-
-  void delete(Integer id);
-
+@Service
+public class ProductService {
+	@Autowired
+	private ProductRespository pr;
+	
+	public List<Product> listAll(){
+		return pr.findAll();
+	}
+	
+	public void save(Product product) {
+		pr.save(product);
+	}
+	
+	public Product get(Integer id) {
+		return pr.findById(id).get();
+	}
+	
+	public void delete(Integer id) {
+		pr.deleteById(id);
+	}
 }

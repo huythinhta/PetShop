@@ -5,7 +5,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Create new</title>
-
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 <link rel="stylesheet" href="https://dl.dropbox.com/s/l4e9oi8kyeqxi9n/bootstrap-editable.css">
 <link rel="stylesheet" href="https://dl.dropbox.com/s/fgf0ix46ahe3nko/bootstrap.min.css">
@@ -61,59 +60,61 @@
                                     <h4 class="panel-title">Thêm sản phẩm</h4>
                                 </div>
                                 <div class="panel-body">
-                                     <form class="form-horizontal" th:action="@{/saveservice}" th:object="${services}" method="post">
-                                       <div class="form-group">
-                                            <label for="input-placeholder" class="col-sm-2 control-label">Mã dịch vụ</label>
+                                     <form  class="form-horizontal" th:action="@{/saveblog}" th:object="${blog}" method="post">
+                                     <div class="form-group">
+                                            <label for="input-placeholder" class="col-sm-2 control-label">Id Blog</label>
                                             <div class="col-sm-10">
-                                                <input type="text" th:field="*{id}" readonly="readonly" class="form-control">
+                                                <input type="text" class="form-control" th:field="*{id}" id="input-placeholder" placeholder="Hãy nhập id blog" readonly>
                                             </div>
                                         </div> 
                                         <div class="form-group">
-                                            <label for="input-placeholder" class="col-sm-2 control-label">Tên dịch vụ</label>
+                                            <label for="input-placeholder" class="col-sm-2 control-label">Id Cate</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" th:field="*{name}" id="input-placeholder" placeholder="Hãy nhập tên dịch vụ">
+                                                <input type="text" class="form-control" th:field="*{cate}" id="input-placeholder" placeholder="Hãy nhập id blog">
                                             </div>
                                         </div> 
                                         <div class="form-group">
-                                            <label for="input-placeholder" class="col-sm-2 control-label">Loại dịch vụ</label>
+                                            <label for="input-placeholder" class="col-sm-2 control-label">Tên blog</label>
                                             <div class="col-sm-10">
-                                                <input type="text" th:field="*{cate}" class="form-control" id="input-placeholder" placeholder="Hãy nhập loại dịch vụ">
+                                                <input type="text" th:field="*{title}" class="form-control" id="input-placeholder" placeholder="Hãy nhập tên blog">
+                                            </div>
+                                        </div> 
+                                        
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Date Picker</label>
+                                            <div class="col-sm-10">
+                                                <input type="date" th:field="*{datepost}" class="form-control date-picker">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="input-placeholder" class="col-sm-2 control-label">Email</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" th:field="*{email}" class="form-control" id="input-placeholder" placeholder="Nhập email">
                                             </div>
                                         </div> 
                                         <div class="form-group">
-                                            <label for="input-placeholder" class="col-sm-2 control-label">Giá</label>
-                                            <div class="col-sm-10">
-                                                <input type="text" th:field="*{price}" class="form-control" id="input-placeholder" placeholder="Giá">
-                                            </div>
-                                        </div> 
-                                        <div class="form-group">
-                                            <label for="input-placeholder" class="col-sm-2 control-label">Tên ảnh</label>
-                                            <div class="col-sm-10">
-                                                <input type="text" th:field="*{images}" class="form-control" id="input-placeholder" placeholder="Nhập tên ảnh">
-                                            </div>
-                                        </div> 
-                                        <div class="form-group">
-                                            <label for="input-placeholder" class="col-sm-2 control-label">Trạng thái</label>
+                                            <label for="input-placeholder" class="col-sm-2 control-label">Ảnh</label>
                                             <div class="col-sm-10">
                           
-                                            	 <input type="checkbox" th:field="*{status}" class="form-control input-rounded" id="input-rounded">
+                                            	 <input type="text" th:field="*{images}" class="form-control input-rounded" id="input-rounded">
                                             </div>
                                         </div> 
-                                        <div class="form-group">
+                                        <!-- <div class="form-group">
                                             <label for="input-placeholder" class="col-sm-2 control-label">Mô tả</label>
                                             <div class="col-sm-10">
-                                                <input type="text" th:field="*{description}" class="form-control" id="input-placeholder" placeholder="Hãy nhập mô tả">
+                                                <input type="text" th:field="*{content}" class="form-control" id="input-placeholder" placeholder="Hãy nhập mô tả">
                                             </div>
-                                        </div> 
+                                        </div>  -->
                                         <div class="form-group">
-                                            <label for="input-placeholder" class="col-sm-2 control-label">Giảm giá</label>
+                                            <label class="col-sm-2 control-label">Nội dung</label>
                                             <div class="col-sm-10">
-                                                <input type="text" th:field="*{discount}" class="form-control" id="input-placeholder" placeholder="Hãy nhập giảm giá">
+                                                
+                                                <textarea class="input-large form-control" id="message" rows="5" th:field="*{content}" placeholder="Nhập nội dung..."></textarea>
                                             </div>
                                         </div> 
                                         <div class="form-group">
                                             <div class="col-sm-offset-2 col-sm-10">
-                                                <button type="submit" class="btn btn-success">Thêm dịch vụ</button>
+                                                <button type="submit" class="btn btn-success">Update blog</button>
                                             </div>
                                         </div>
                                         

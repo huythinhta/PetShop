@@ -1,14 +1,15 @@
 package pet.petshop.entity;
 
-
-import javax.persistence.*;
-
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
-public class Productcategories {
-    private Integer id;
-    private String name;
-	public Productcategories() {
+public class Blogcategories {
+	private Integer id;
+	private String name;
+	public Blogcategories() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -26,5 +27,5 @@ public class Productcategories {
 	public void setName(String name) {
 		this.name = name;
 	}
-    
+	
 }

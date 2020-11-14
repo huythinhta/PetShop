@@ -31,13 +31,13 @@ public class ServiceController {
 		return "service/new_service1";
 	}
 	
-	@RequestMapping(value="/save", method = RequestMethod.POST)
+	@RequestMapping(value="/saveservice", method = RequestMethod.POST)
 		public String saveService(@ModelAttribute("services") Services services)
 		{
 		abc.save(services);
 		return "redirect:/services";
 }
-	@RequestMapping("/edit/{id}")
+	@RequestMapping("/editservice/{id}")
 	public ModelAndView showEditServiceForm(@PathVariable(name = "id") int id) {
 		ModelAndView mav = new ModelAndView("service/edit_services1");
 		Services services= abc.get(id);
@@ -46,9 +46,9 @@ public class ServiceController {
 		return mav;
 	}
 	
-	@RequestMapping("/delete/{id}")
+	@RequestMapping("/deleteservice/{id}")
 	public String delteteServices(@PathVariable(name="id") Integer id) {
 		abc.delete(id);
-		return "redirect:/";
+		return "redirect:/services";
 	}
 }

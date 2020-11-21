@@ -1,3 +1,4 @@
+drop database if exists Petshop;
 CREATE schema `Petshop`;
 use Petshop;
 -- User--------------------
@@ -18,6 +19,7 @@ insert into user
 values ('4', 'minh', '$2a$10$btFJx8zlfGrgED0qGb.QZeDVqHSjeyo9PClrDD3ZPgQv9pEME0dWG', 'ROLE_USER');
 insert into user
 values ('5', 'thinh', '$2a$10$p/9gNp9/dHSher9UeNRRN.x/S4uNU2/yHHckmJzgtrJqQffBO4zS.', 'ROLE_USER');
+
 -- Product----------------------
 create table ProductCategories
 (
@@ -35,6 +37,7 @@ insert into ProductCategories(id, name)
 values (4, 'Do choi');
 insert into ProductCategories(id, name)
 values (5, 'Nha o');
+
 create table Product
 (
     id       int auto_increment primary key,           -- mã sản phẩm
@@ -87,14 +90,14 @@ create table ProductDetail
     length      int           default 0,                -- rộng
     typeofpet   nvarchar(100) default 'Mọi loại pet', -- loại pet
     stage       nvarchar(100) default 'Mọi độ tuổi', -- giải đoạn như còn bé, trường thành, già
-    description nvarchar(200),                          -- mô tả
+    description text,                                   -- mô tả
     constraint pd_fk foreign key (idproduct) references Product (id)
 );
 insert into ProductDetail (idproduct, description)
 values (1, "Là loại thức ăn tốt nhất dành cho chó hiện nay ở trên thị trường Việt Nam và toàn thế giới. Với những công
 thức được kiểm tra và đo lường kỹ càng. Sẽ đảm bảo sức khỏe cho chú chó của bạn khi bạn dùng sản phẩm này.");
 insert into ProductDetail (idproduct, height, width, length, description)
-values (2,50, 60, 50, "Loại quần áo thịnh hành với những chú chó hiện nay. Đem lại sự tươi mới cho chú chó của bạn.");
+values (2, 50, 60, 50, "Loại quần áo thịnh hành với những chú chó hiện nay. Đem lại sự tươi mới cho chú chó của bạn.");
 insert into ProductDetail (idproduct, description)
 values (3, "Được làm từ nguyên vật liệu không gây hại cho chú chó của bạn. Có nhiều loại hình màu sắc khác nhau
 để bạn có thể có nhiều lựa chọn cho chú chó của mình");
@@ -130,14 +133,15 @@ values (14, 20, 15, 15, "Để tránh cho chú chuột chạy lung tung. Bên tr
 mọi thứ cần thiết cho chú chuột của bạn vui chơi.");
 insert into ProductDetail (idproduct, description)
 values (15, "Dụng cụ giúp chuột giảm béo");
+
 -- Bill-----------------------
 create table Bill
 (
-    id         int auto_increment primary key, -- mã hoá đơn
-    date       date NOT NULL default now(),    -- ngày xuất hoá đơn
-    userid     int  not null,                  -- người mua hàng
-    status     int  not null default 0,-- 0 Là đang chờ xử lý, 1 là đang chuyển hàng, 2 là đã nhận hàng và thanh toán
-    totalprice int           default 0,        -- tổng tiền
+    id         int auto_increment primary key,  -- mã hoá đơn
+    date       datetime NOT NULL default now(), -- ngày xuất hoá đơn
+    userid     int      not null,               -- người mua hàng
+    status     int      not null default 0,-- 0 Là đang chờ xử lý, 1 là đang chuyển hàng, 2 là đã nhận hàng và thanh toán
+    totalprice int               default 0,     -- tổng tiền
     constraint b_fk foreign key (userid) references user (id)
 );
 -- insert Bill
@@ -244,7 +248,7 @@ create table Services
     price       int           not null default 0, -- giá dịch vụ
     images      nvarchar(200) not null,           -- Hình dịch vụ
     status      bit                    default 1,-- trạng thái 0 là ngừng phục vụ 1 là có phục vụ
-    description nvarchar(200),                    -- mô tả dịch vụ
+    description text,                             -- mô tả dịch vụ
     discount    int                    default 0, -- giảm giá
     constraint s_sc_fk foreign key (cate) references ServiceCategories (id)
 );

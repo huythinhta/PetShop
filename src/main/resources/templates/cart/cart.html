@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+	xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{fragments/user1/main_layout}" >
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="cart/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="cart/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="cart/css/themify-icons.css" type="text/css">
+    <link rel="stylesheet" href="cart/css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="cart/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="cart/css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="cart/css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="cart/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="cart/css/style.css" type="text/css">
+</head>
+<body>
+<div class="super_container">
+<header th:fragment="header"></header>
+	<div layout:fragment="content">
+	<div class="main_slider" style="background-image:url(user1/images/mikhail-vasilyev-NodtnCsLdTE-unsplash.jpg)">
+		<div class="container fill_height">
+			<div class="row align-items-center fill_height">
+				<div class="col">
+					<div class="main_slider_content">
+						<h6 style="color: white;">Bộ sưu tập mùa Đông/ 2020</h6>
+						<h1 style="color: white;">Get up to 30% Off</h1>
+						<div class="red_button shop_now_button"><a href="#">shop now</a></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="new_arrivals">
+		<div class="container">
+			<div class="row">
+				<div class="col text-center">
+					<div class="section_title">
+						<h2>Hàng mới về</h2>
+					</div>
+				</div>
+			</div>
+			<hr>
+			<div class="row">
+                <div class="col-lg-12">
+                    <div class="cart-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Image</th>
+                                    
+                                    <th class="p-name">Product Name</th>
+                                    <th>Price</th>
+                                    <th>Quantity</th>
+                                    <th>Total</th>
+                                    <th><i class="ti-close"></i></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="item : ${session.cart}">
+                                    <td class="cart-pic first-row"><img src="user1/images/Reusable Pet Food Storage Bag.jpg"></td>
+                                    
+                                    <td class="cart-title first-row">
+                                        <h5 th:text="${item.product.name}"></h5>
+                                    </td>
+                                    <td class="p-price first-row" th:text="${item.product.price}"></td>
+                                    <td class="qua-col">
+                                        <div class="quantity">
+                                            <div class="pro-qty">
+                                                <input type="text" th:value="${item.quantity}">
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="total-price first-row" th:text="${item.product.price*item.quantity}"></td>
+                                    <td class="close-td first-row"><i class="ti-close"></i></td>
+                                    <td class="cart-title first-row">
+                                        <h5 th:text="${#aggregates.sum(item.product.![price])}"></h5>
+                                    </td>
+                                    
+                                </tr>
+                               
+                              
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="cart-buttons">
+                                <a href="/sanpham" class="primary-btn continue-shop">Continue shopping</a>
+                                <a href="#" class="primary-btn up-cart">Update cart</a>
+                            </div>
+                            <div class="discount-coupon">
+                                <h6>Discount Codes</h6>
+                                <form action="#" class="coupon-form">
+                                    <input type="text" placeholder="Enter your codes">
+                                    <button type="submit" class="site-btn coupon-btn">Apply</button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 offset-lg-4">
+                            <div class="proceed-checkout">
+                                <ul>
+                                    <li class="subtotal">Subtotal <span>$240.00</span></li>
+                                    <li class="cart-total">Total <span></span></li>
+                                </ul>
+                                <a href="#" class="proceed-btn">PROCEED TO CHECK OUT</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+            </div>
+	</div>
+	</div>
+	<script src="cart/js/jquery-3.3.1.min.js"></script>
+    <script src="cart/js/bootstrap.min.js"></script>
+    <script src="cart/js/jquery-ui.min.js"></script>
+    <script src="cart/js/jquery.countdown.min.js"></script>
+    <script src="cart/js/jquery.nice-select.min.js"></script>
+    <script src="cart/js/jquery.zoom.min.js"></script>
+    <script src="cart/js/jquery.dd.min.js"></script>
+    <script src="cart/js/jquery.slicknav.js"></script>
+    <script src="cart/js/owl.carousel.min.js"></script>
+    <script src="cart/js/main.js"></script>
+</body>
+</html>

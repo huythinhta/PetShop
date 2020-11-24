@@ -51,7 +51,7 @@
 										<th>Service id</th>
 										<th>Category id</th>
 										<th>Date</th>
-										<th>Email</th>
+										<th>User ID</th>
 										<th>Images</th>
 										<th>Content</th>
 										<th>Action</th>
@@ -63,7 +63,7 @@
 										<th>Service id</th>
 										<th>Category id</th>
 										<th>Date</th>
-										<th>Email</th>
+										<th>User ID</th>
 										<th>Images</th>
 										<th>Content</th>
 										<th>Action</th>
@@ -75,7 +75,7 @@
 										<td th:text="${blog.id}">Blog id</td>
 										<td th:text="${blog.cate}">Category id</td>
 										<td th:text="${blog.datepost}">Date</td>
-										<td th:text="${blog.email}">Email</td>
+										<td th:text="${blog.userid}">Người đăng</td>
 										<td th:text="${blog.images}">Images</td>
 										<td th:text="${blog.content}">Content</td>
 										<td><a th:href="@{'/editblog/' + ${blog.id}}">edit</a></td>

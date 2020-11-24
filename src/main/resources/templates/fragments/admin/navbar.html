@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
 <div th:fragment="navbar">
-            
             <div class="navbar">
                 <div class="navbar-inner">
                     <div class="sidebar-pusher">
@@ -72,15 +71,37 @@
                         
 
                         <li><a href="/admin" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-home"></span><p>Trang chủ</p></a></li>
-                        <li><a href="/services" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-globe"></span><p>Dịch vụ</p></a></li>
-                         <li><a href="/servicecategories" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-th-large"></span><p>Loại dịch vụ</p></a></li>
+                         <li><a href="/user" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-user"></span><p>Người dùng</p></a></li>
+						<li class="droplink"><a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-list"></span><p>Dịch vụ</p><span class="arrow"></span></a>
+                            <ul class="sub-menu">
+                                <li><a href="/services">Dịch vụ</a></li>
+                                <li><a href="/servicecategories">Loại dịch vụ</a></li>
+                               
+                            </ul>
+                        </li>
                         
-                         <li><a href="/product" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-th-large"></span><p>Sản phẩm</p></a></li>
-                         <li><a href="/productcategories" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-th-large"></span><p>Loại sản phẩm</p></a></li>
-                         <li><a href="/productdetail" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-th-large"></span><p>Chi tiết sản phẩm</p></a></li>
-                         <li><a href="/blog" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-th-large"></span><p>Blog</p></a></li>
-                         <li><a href="/blogcategories" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-th-large"></span><p>Loại Blog</p></a></li>
-
+                        <li class="droplink"><a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-piggy-bank"></span><p>Sản phẩm</p><span class="arrow"></span></a>
+                            <ul class="sub-menu">
+                                <li><a href="/product">Quản lý Sản phẩm</a></li>
+                                <li><a href="/productcategories">Loại sản phẩm</a></li>
+                               <li><a href="/productdetail">Chi tiết sản phẩm</a></li>
+                            </ul>
+                        </li>
+                        <li class="droplink"><a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-grain"></span><p>Blog</p><span class="arrow"></span></a>
+                            <ul class="sub-menu">
+                                <li><a href="/blog">Blog</a></li>
+                                <li><a href="/blogcategories">Loại Blog</a></li>
+                               
+                            </ul>
+                        </li>
+                         <li class="droplink"><a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-usd"></span><p>Hoá đơn</p><span class="arrow"></span></a>
+                            <ul class="sub-menu">
+                                <li><a href="/blog">Hoá đơn</a></li>
+                                <li><a href="/blogcategories">Chi tiết hoá đơn</a></li>
+                               
+                            </ul>
+                        </li>
+                        
                     </ul>
                 </div><!-- Page Sidebar Inner -->
                 

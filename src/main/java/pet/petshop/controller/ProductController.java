@@ -19,6 +19,12 @@ public class ProductController {
 	@Autowired
 	private ProductService ps;
 	
+	@RequestMapping("/sanpham")
+	public String sanpham(Model model) {
+		List<Product> product = ps.listAll();
+		model.addAttribute("product", product);
+		return "product/sanpham";
+	}
 	@RequestMapping("/product")
 	public String viewHomePage(Model model) {
 		List<Product> product = ps.listAll();

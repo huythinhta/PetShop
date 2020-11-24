@@ -28,4 +28,8 @@ public class ProductCategoryService {
 	public void delete(Integer id) {
 		pcpo.deleteById(id);
 	}
+
+	public List<Productcategories> findCategoriesByName(String name){
+		return pcpo.findAllByNameContaining(name);
+	};
 }

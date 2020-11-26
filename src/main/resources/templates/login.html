@@ -1,90 +1,91 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
-<meta charset="ISO-8859-1">
-<title>Registration and Login App</title>
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<style>
-body {
-    font-family: "Lato", sans-serif;
-}
+    <meta charset="ISO-8859-1">
+    <title>Registration and Login App</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <style>
+        body {
+            font-family: "Lato", sans-serif;
+        }
 
 
+        .main-head {
+            height: 150px;
+            background: #FFF;
 
-.main-head{
-    height: 150px;
-    background: #FFF;
-   
-}
+        }
 
-.sidenav {
-    height: 140%;
-    background-image:url("https://source.unsplash.com/1hBWrLIDSCc/481x1036"); 
-    overflow-x: hidden;
-    padding-top: 20px;
-    background-repeat:no-repeat;
-}
-
-
-.main {
-    padding: 0px 10px;
-}
-
-@media screen and (max-height: 450px) {
-    .sidenav {padding-top: 15px;}
-}
-
-@media screen and (max-width: 450px) {
-    .login-form{
-        margin-top: 10%;
-    }
-
-    .register-form{
-        margin-top: 10%;
-    }
-}
-
-@media screen and (min-width: 768px){
-    .main{
-        margin-left: 40%; 
-    }
-
-    .sidenav{
-        width: 40%;
-        position: fixed;
-        z-index: 1;
-        top: 0;
-        left: 0;
-    }
-
-    .login-form{
-        margin-top: 80%;
-    }
-
-    .register-form{
-        margin-top: 20%;
-    }
-}
+        .sidenav {
+            height: 140%;
+            background-image: url("https://source.unsplash.com/1hBWrLIDSCc/481x1036");
+            overflow-x: hidden;
+            padding-top: 20px;
+            background-repeat: no-repeat;
+        }
 
 
-.login-main-text{
-    margin-top: 20%;
-    padding: 60px;
-    color: #fff;
-}
+        .main {
+            padding: 0px 10px;
+        }
 
-.login-main-text h2{
-    font-weight: 300;
-}
+        @media screen and (max-height: 450px) {
+            .sidenav {
+                padding-top: 15px;
+            }
+        }
 
-.btn-black{
-    background-color: #000 !important;
-    color: #fff;
-}
-</style>
+        @media screen and (max-width: 450px) {
+            .login-form {
+                margin-top: 10%;
+            }
+
+            .register-form {
+                margin-top: 10%;
+            }
+        }
+
+        @media screen and (min-width: 768px) {
+            .main {
+                margin-left: 40%;
+            }
+
+            .sidenav {
+                width: 40%;
+                position: fixed;
+                z-index: 1;
+                top: 0;
+                left: 0;
+            }
+
+            .login-form {
+                margin-top: 80%;
+            }
+
+            .register-form {
+                margin-top: 20%;
+            }
+        }
+
+
+        .login-main-text {
+            margin-top: 20%;
+            padding: 60px;
+            color: #fff;
+        }
+
+        .login-main-text h2 {
+            font-weight: 300;
+        }
+
+        .btn-black {
+            background-color: #000 !important;
+            color: #fff;
+        }
+    </style>
 
 </head>
 <!-- <body>
@@ -136,38 +137,37 @@ body {
 	</div>
 </body> -->
 <body>
-	<div class="sidenav">
-		<div class="login-main-text">
-			<h2>
-				PETLOVE<br> Đăng nhập
-			</h2>
-			
-		</div>
-	</div>
-	<div class="main">
-		<div class="col-md-6 col-sm-12">
-			<div class="login-form">
-				<form th:action="@{/login}" method="post">
-					<div class="form-group">
-						
-						
-							<input type="text" class = "form-control" id ="username" name = "username"
-						placeholder="Enter Email ID" autofocus="autofocus">
-					</div>
-					<div class="form-group">
-						 <input type="password"
-							id="password" name="password" class="form-control"
-							placeholder="Enter Password" />
-							</div>
-					<button type="submit" class="btn btn-black">Login</button>
-					<a class="btn btn-secondary" href="/" th:href="@{/registration}">Register</a>
-					
-				</form>
-			</div>
-		</div>
-	</div>
-</body>
+<div class="sidenav">
+    <div class="login-main-text">
+        <h2>
+            PETLOVE<br> Đăng nhập
+        </h2>
 
+    </div>
+</div>
+<div class="main">
+    <div class="col-md-6 col-sm-12">
+        <div class="login-form">
+            <form th:action="@{/login}" method="post">
+                <div class="form-group">
+
+
+                    <input type="text" class="form-control" id="username" name="username"
+                           placeholder="Enter Email ID" autofocus="autofocus">
+                </div>
+                <div class="form-group">
+                    <input type="password"
+                           id="password" name="password" class="form-control"
+                           placeholder="Enter Password"/>
+                </div>
+                <button type="submit" class="btn btn-black">Login</button>
+                <a class="btn btn-secondary" href="/" th:href="@{/registration}">Register</a>
+
+            </form>
+        </div>
+    </div>
+</div>
+</body>
 
 
 </html>

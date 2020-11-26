@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="cart/css/nice-select.css" type="text/css">
     <link rel="stylesheet" href="cart/css/jquery-ui.min.css" type="text/css">
     <link rel="stylesheet" href="cart/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
     <link rel="stylesheet" href="cart/css/style.css" type="text/css">
 </head>
 <body>
@@ -54,7 +55,7 @@
                                     <th>Price</th>
                                     <th>Quantity</th>
                                     <th>Total</th>
-                                    <th><i class="ti-close"></i></th>
+                                    <th><i class="fas fa-trash-alt"></i></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -73,9 +74,9 @@
                                         </div>
                                     </td>
                                     <td class="total-price first-row" th:text="${item.product.price*item.quantity}"></td>
-                                    <td class="close-td first-row"><i class="ti-close"></i></td>
+                                    <td><i class="fas fa-trash-alt"></i></td>
                                     <td class="cart-title first-row">
-                                        <h5 th:text="${#aggregates.sum(item.product.![price])}"></h5>
+                                        <h5></h5>
                                     </td>
                                     
                                 </tr>

@@ -1,20 +1,18 @@
 package pet.petshop.controller;
 
-import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
-import pet.petshop.entity.Product;
+
 import pet.petshop.service.ProductService;
-
 @Controller
 public class MainController {
-	private ProductService ps;
+	
+	
 	
 	@GetMapping("/login")
 	public String login() {
@@ -22,13 +20,14 @@ public class MainController {
 	}
 	
 	
-	 @GetMapping("/") 
-	 public String home() { return "index4"; }
+	 
+	    
+	    
 	 
 
 	
 	
-	
+	 
 	@GetMapping("/home")
 	public String home1() {
 		return "index5";
@@ -41,6 +40,10 @@ public class MainController {
 	@GetMapping("/admin")
 	public String home2() {
 		return "index3";
+	}
+	@GetMapping("/")
+	public String Index() {
+		return "indexnotlogin";
 	}
 	
 }

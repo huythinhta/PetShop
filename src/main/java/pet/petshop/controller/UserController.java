@@ -39,12 +39,12 @@ public class UserController {
 	public String saveUser(@ModelAttribute("user") User user) {
 	    us.save(user);
 	     
-	    return "redirect:/";
+	    return "redirect:/user";
 	}
 	
 	@RequestMapping("/editUser/{id}")
 	public ModelAndView showEditUserPage(@PathVariable(name = "id") int id) {
-	    ModelAndView mav = new ModelAndView("edit_user");
+	    ModelAndView mav = new ModelAndView("user/edit_user");
 	    User user = us.get(id);
 	    mav.addObject("user", user);
 	     
@@ -54,6 +54,6 @@ public class UserController {
 	@RequestMapping("/deleteUser/{id}")
 	public String deleteProduct(@PathVariable(name = "id") int id) {
 	    us.delete(id);
-	    return "redirect:/";       
+	    return "redirect:/user";       
 	}
 }

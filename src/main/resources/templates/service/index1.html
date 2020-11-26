@@ -54,20 +54,7 @@
 					<th></th>
 				</tr>
 								</thead>
-								<tfoot>
-									<tr>
-					<th>Service id</th>
-					<th>Name</th>
-					<th>Category</th>
-					<th>Price</th>
-					<th>Images</th>
-					<th>Status</th>
-					<th>Description</th>
-					<th>discount</th>
-					<th>Action</th>
-					<th></th>
-				</tr>
-								</tfoot>
+								
 								<tbody>
 									<tr th:each="services : ${listServices}">
 										<td th:text="${services.id}">Service id</td>
@@ -78,8 +65,8 @@
 										<td th:text="${services.status}">Status</td>
 										<td th:text="${services.description}">de</td>
 										<td th:text="${services.discount}">di</td>
-										<td><a th:href="@{'/edit/' + ${services.id}}">edit</a></td>
-										<td><a th:href="@{'/delete/' + ${services.id}}">delte</a>
+										<td><a th:href="@{'/editservice/' + ${services.id}}">edit</a></td>
+										<td><a th:href="@{'/deleteservice/' + ${services.id}}">delte</a>
 										</td>
 									</tr>
 								</tbody>

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -13,8 +14,15 @@ import pet.petshop.service.ProductService;
 
 @Controller
 public class ProductController {
+
     @Autowired
     private ProductService ps;
+    
+    @RequestMapping("/trangchu")
+    public String index2(ModelMap model) {
+		model.put("product",ps.listAll());
+		return "index4";
+	}
 
     @RequestMapping("/product")
     public String viewHomePage(Model model, @RequestParam(value = "search", defaultValue = "", required = false) String search) {

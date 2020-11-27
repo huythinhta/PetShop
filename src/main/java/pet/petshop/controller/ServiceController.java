@@ -17,6 +17,12 @@ import pet.petshop.service.ServiceServices;
 public class ServiceController {
 	@Autowired
 	private ServiceServices abc;
+	@RequestMapping("/dichvu")
+	public String viewHomePageDichvu(Model model) {
+		List<Services> listServices = abc.listALl();
+		model.addAttribute("listServices",listServices);
+		return "service/show_dichvu";
+	}
 	@RequestMapping("/services")
 	public String viewHomePage(Model model) {
 		List<Services> listServices = abc.listALl();

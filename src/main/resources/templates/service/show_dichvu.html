@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+	xmlns:layout="http://www.w3.org/1999/xhtml"
+	layout:decorate="~{fragments/user1/main_layout}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="user1/styles/single_styles.css">
+<link rel="stylesheet" type="text/css" href="user1/styles/single_responsive.css">
+</head>
+<body>
+	<div class="super_container">
+		<header th:fragment="header"> </header>
+		<div layout:fragment="content">
+		<div class="container" style="padding-top: 150px">
+		<div class="row">
+				<div class="col text-center">
+					<div class="section_title new_arrivals_title">
+						<h2>Trang Dịch Vụ hiện đang bảo trì</h2>
+						<h3>Các Dev đang cố gắng fix bugs và hoàn thiện trước deadline</h3>
+						<iframe src="https://giphy.com/embed/13rQ7rrTrvZXlm" width="480" height="320" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/geek-the-incredibles-writing-schedule-13rQ7rrTrvZXlm">via GIPHY</a></p>
+					</div>
+				</div>
+			</div>
+		</div>
+			
+			
+		</div>
+	</div>
+</body>
+</html>

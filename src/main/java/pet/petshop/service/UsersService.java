@@ -12,22 +12,28 @@ import pet.petshop.repository.UserRepository;
 @Service
 @Transactional
 public class UsersService {
-	@Autowired
-	private UserRepository userRepository;
 
-	public List<User> listAll() {
-		return userRepository.findAll();
-	}
+    @Autowired
+    private UserRepository userRepository;
 
-	public void save(User ur) {
-		userRepository.save(ur);
-	}
+    public List<User> listAll() {
+        return userRepository.findAll();
+    }
 
-	public User get(int id) {
-		return userRepository.findById(id).get();
-	}
+    public void save(User ur) {
+        userRepository.save(ur);
+    }
 
-	public void delete(int id) {
-		userRepository.deleteById(id);
-	}
+    public User get(int id) {
+        return userRepository.findById(id).get();
+    }
+
+    public void delete(int id) {
+        userRepository.deleteById(id);
+    }
+
+    public List<User> findAllByEmailContain(String email) {
+        return userRepository.findAllByEmailContaining(email);
+    }
+
 }

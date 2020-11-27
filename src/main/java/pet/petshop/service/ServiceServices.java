@@ -23,5 +23,10 @@ public class ServiceServices {
 	public void delete(Integer id) {
 		sepo.deleteById(id);
 	}
+	public List<Services> name (String name) {
+		return
+		sepo.findAllByNameContaining(name);
+
+	}
 }
 

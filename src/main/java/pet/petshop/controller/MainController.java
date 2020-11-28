@@ -11,21 +11,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import pet.petshop.service.ProductService;
 @Controller
 public class MainController {
-	
+	@Autowired
+	private ProductService ps;
 	
 	
 	@GetMapping("/login")
 	public String login() {
 		return "login";
 	}
-	
-	
-	 
-	    
-	    
-	 
-
-	
 	
 	 
 	@GetMapping("/home")
@@ -42,7 +35,8 @@ public class MainController {
 		return "index3";
 	}
 	@GetMapping("/")
-	public String Index() {
+	public String Index(ModelMap model) {
+		model.put("product",ps.listAll());
 		return "indexnotlogin";
 	}
 	

@@ -1,8 +1,12 @@
 package pet.petshop.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -37,8 +41,18 @@ public class UserRegistrationController {
 	}
 	
 	@PostMapping
-	public String registerUserAccount(@ModelAttribute("user") User user) {
+	public String registerUserAccount(@ModelAttribute("user")@Valid User user,BindingResult bindingResult) {
+		if(bindingResult.hasErrors()==true) {
+			return "registration";
+		}
+		else if(userService.userExist(user.getEmail())==true) {
+			bindingResult.addError(new FieldError("user", "email", "Địa chỉ email đã được đăng ký"));
+			return "registration";
+		}
+		else {
 		userService.Regis(user);
 		return "redirect:/registration?success";
+		
+		}
 	}
 }

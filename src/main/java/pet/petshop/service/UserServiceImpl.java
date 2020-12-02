@@ -3,6 +3,7 @@ package pet.petshop.service;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,6 +65,11 @@ public class UserServiceImpl implements UserService{
 	public void delete(int id) {
 		userRepository.deleteById(id);
 	}
-	
-	
+	public Optional<User> findUserByEmail(String email){
+    	return userRepository.findUserByEmail(email);
+    }
+    
+    public boolean userExist(String email) {
+    	return findUserByEmail(email).isPresent();
+    }
 }

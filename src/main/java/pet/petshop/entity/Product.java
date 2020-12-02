@@ -1,19 +1,53 @@
 package pet.petshop.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 @Entity
+@Table(name = "product")
 public class Product {
+	@Column(name = "id")
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+	
+	@Column(name = "cate")
     private Integer cate;
+	
+	@Column(name = "name")
+	//@Pattern(regexp = "[^\\w]", message = "Không chứa kí tự đặc biệt")
+	@Size(max = 11,min=3,message = "Ít nhất 3 kí tự, nhiều nhất là 11 kí tự")
+	@NotBlank(message = "Hãy nhập tên sản phẩm")
     private String name;
+	
+	@Column(name = "brand")
+	//@Pattern(regexp = "[^\\w]", message = "Không chứa kí tự đặc biệt")
+	@Size(max = 11,min=3,message = "Ít nhất 3 kí tự, nhiều nhất là 11 kí tự")
+	@NotBlank(message = "Hãy nhập hãng của sản phẩm")
     private String brand;
+	
+	@Column(name="images")
+	//@Pattern(regexp = "[^\\w]", message = "Không chứ kí tự đặc biệt")
+	@Size(max = 11,min=3,message = "Ít nhất 3 kí tự, nhiều nhất là 11 kí tự")
+	@NotBlank(message = "Hãy chọn hình")
     private String images;
+	
+	@Column(name = "status")
     private Boolean status;
+	
+	@Column(name = "price")
+	@NotNull(message = "Hãy nhập giá")
     private Integer price;
+	
+	@Column(name = "discount")
     private Integer discount;
 
     public Product() {

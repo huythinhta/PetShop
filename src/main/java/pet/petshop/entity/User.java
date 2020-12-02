@@ -27,9 +27,8 @@ public class User {
 	
 	@Column(name = "password")
 	@NotBlank(message = "Vui lòng nhập password")
-	@Size(max = 11,min=3,message = "Ít nhất 3 kí tự, nhiều nhất là 11 kí tự")
+	//@Size(max = 11,min=3,message = "Ít nhất 3 kí tự, nhiều nhất là 11 kí tự")
 	@Pattern(regexp = "^\\s*\\S+\\s*$", message = "Không được để khoảng trắng")
-	@Pattern(regexp = "/^[a-zA-Z0-9]$/", message = "Không chứ kí tự đặc biệt")
 	private String password;
 	@Column(name = "role")
 	private String role;

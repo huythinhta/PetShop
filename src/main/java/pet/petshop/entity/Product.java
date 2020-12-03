@@ -6,6 +6,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -23,21 +25,21 @@ public class Product {
     private Integer cate;
 	
 	@Column(name = "name")
-	//@Pattern(regexp = "[^\\w]", message = "Không chứa kí tự đặc biệt")
-	@Size(max = 11,min=3,message = "Ít nhất 3 kí tự, nhiều nhất là 11 kí tự")
+	//@Pattern(regexp="^[a-zA-Z0-9\s]*$", message = "Không chứa kí tự đặc biệt")
+	@Size(min = 3, max = 30, message = "Ít nhất 3 kí tự, nhiều nhất 30 kí tự")
 	@NotBlank(message = "Hãy nhập tên sản phẩm")
     private String name;
 	
 	@Column(name = "brand")
-	//@Pattern(regexp = "[^\\w]", message = "Không chứa kí tự đặc biệt")
-	@Size(max = 11,min=3,message = "Ít nhất 3 kí tự, nhiều nhất là 11 kí tự")
+	//@Pattern(regexp="^[a-zA-Z0-9\s]*$", message = "Không chứa kí tự đặc biệt")
+	@Size(min = 3, max = 30, message = "Ít nhất 3 kí tự, nhiều nhất 30 kí tự")
 	@NotBlank(message = "Hãy nhập hãng của sản phẩm")
     private String brand;
 	
 	@Column(name="images")
-	//@Pattern(regexp = "[^\\w]", message = "Không chứ kí tự đặc biệt")
-	@Size(max = 11,min=3,message = "Ít nhất 3 kí tự, nhiều nhất là 11 kí tự")
-	@NotBlank(message = "Hãy chọn hình")
+	//@Pattern(regexp="^[a-zA-Z0-9\s]*$", message = "Không chứa kí tự đặc biệt")
+	@Size(min = 3, max = 11, message = "Ít nhất 3 kí tự, nhiều nhất 11 kí tự")
+	@NotBlank(message = "Hình ?")
     private String images;
 	
 	@Column(name = "status")
@@ -55,8 +57,6 @@ public class Product {
         // TODO Auto-generated constructor stub
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer getId() {
         return id;
     }

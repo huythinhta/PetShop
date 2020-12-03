@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -15,6 +17,7 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(name = "user")
 public class User {
+	@Column(name = "id")
 	@Id
 	@GeneratedValue(strategy =  GenerationType.IDENTITY)
 	private int id;
@@ -27,8 +30,10 @@ public class User {
 	
 	@Column(name = "password")
 	@NotBlank(message = "Vui lòng nhập password")
-	//@Size(max = 11,min=3,message = "Ít nhất 3 kí tự, nhiều nhất là 11 kí tự")
+	@Min(value = 3,message = "Ít nhất 3 kí tự")
+	@Max(value = 11,message = "Nhiều nhất 11 kí tự")
 	@Pattern(regexp = "^\\s*\\S+\\s*$", message = "Không được để khoảng trắng")
+	
 	private String password;
 	@Column(name = "role")
 	private String role;

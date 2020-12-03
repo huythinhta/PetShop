@@ -1,9 +1,12 @@
 package pet.petshop.controller;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -41,8 +44,12 @@ public class ServiceController {
 	}
 	
 	@RequestMapping(value="/saveservice", method = RequestMethod.POST)
-		public String saveService(@ModelAttribute("services") Services services)
+		public String saveService(@ModelAttribute("services")@Valid Services services,BindingResult bindingResult)
 		{
+		if(bindingResult.hasErrors()==true)
+		{
+			return "service/new_service1";
+		}
 		abc.save(services);
 		return "redirect:/services";
 }

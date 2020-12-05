@@ -37,9 +37,7 @@ public class Product {
     private String brand;
 	
 	@Column(name="images")
-	//@Pattern(regexp="^[a-zA-Z0-9\s]*$", message = "Không chứa kí tự đặc biệt")
-	@Size(min = 3, max = 11, message = "Ít nhất 3 kí tự, nhiều nhất 11 kí tự")
-	@NotBlank(message = "Hình ?")
+
     private String images;
 	
 	@Column(name = "status")

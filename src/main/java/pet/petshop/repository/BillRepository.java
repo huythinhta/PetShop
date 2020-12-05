@@ -5,6 +5,8 @@ import org.springframework.stereotype.Repository;
 
 import pet.petshop.entity.Bill;
 
+
+
 @Repository
 public interface BillRepository extends JpaRepository<Bill, Integer> {
 }

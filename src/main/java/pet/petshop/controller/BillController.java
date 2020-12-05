@@ -46,7 +46,7 @@ public class BillController {
 		List<BillInfo> bifs = new ArrayList<BillInfo>();
 		List<Item> cart = (List<Item>) session.getAttribute("cart");
 		for (int i = 0; i < cart.size(); i++) {
-			Item item = cart.get(0);
+			Item item = cart.get(i);
 			total += item.getQuantity() * item.getProduct().getPrice();
 			BillInfo bi = new BillInfo();
 			bi.setIdproduct(item.getProduct().getId());
@@ -59,7 +59,7 @@ public class BillController {
 		for (int i = 0; i < bifs.size(); i++) {
 			bis.save(bifs.get(i));
 		}
-		return "index";
+		return "index/index";
 	}
 
 }

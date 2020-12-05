@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+	xmlns:layout="http://www.w3.org/1999/xhtml"
+	layout:decorate="~{fragments/user/main_layout}">
+<head>
+<meta charset="UTF-8">
+<title>Trang chủ</title>
+</head>
+<body class="about-us sidebar-collapse">
+	<div layout:fragment="content" class="main main-raised">
+		<div class="container">
+      <div class="about-description text-center">
+        <div class="row">
+          <div class="col-md-8 ml-auto mr-auto">
+            <h5 class="description">This is the paragraph where you can write more details about your product. Keep you user engaged by providing meaningful information. Remember that by this time, the user is curious, otherwise he wouldn&apos;t scroll to get here. Add a button if you want the user to see more.</h5>
+          </div>
+        </div>
+      </div>
+      <div class="about-team team-1">
+        <div class="row">
+          <div class="col-md-8 ml-auto mr-auto text-center">
+            <h2 class="title">We are nerd rockstars</h2>
+            <h5 class="description">This is the paragraph where you can write more details about your team. Keep you user engaged by providing meaningful information.</h5>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="card card-profile card-plain">
+              <div class="card-avatar">
+                <a href="#pablo">
+                  <img class="img" src="../assets/img/phongava.jpg">
+                </a>
+              </div>
+              <div class="card-body">
+                <h4 class="card-title">Nguyễn Quốc Phong</h4>
+                <h6 class="category text-muted">Trưởng khoa</h6>
+                <p class="card-description">
+                  Làm việc Làm việc Làm việc Làm việc Làm việc Làm việc Làm việc 
+                </p>
+              </div>
+              
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card card-profile card-plain">
+              <div class="card-avatar">
+                <a href="#pablo">
+                  <img class="img" src="../assets/img/minhava.jpg">
+                </a>
+              </div>
+              <div class="card-body">
+                <h4 class="card-title">Nguyễn Hoàng Minh</h4>
+                <h6 class="category text-muted">Bác sĩ phẩu thuật</h6>
+                <p class="card-description">
+                  Làm việc Làm việc Làm việc Làm việc Làm việc Làm việc Làm việc Làm việc 
+                </p>
+              </div>
+              
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card card-profile card-plain">
+              <div class="card-avatar">
+                <a href="#pablo">
+                  <img class="img" src="../assets/img/thinhava.jpg">
+                </a>
+              </div>
+              <div class="card-body">
+                <h4 class="card-title">Tạ Huy Thinh</h4>
+                <h6 class="category text-muted">Bác sĩ chỉnh hình</h6>
+                <p class="card-description">
+                 Làm việc Làm việc Làm việc Làm việc Làm việc Làm việc Làm việc Làm việc Làm việc 
+                </p>
+              </div>
+              <div class="card-footer justify-content-center">
+                <a href="#pablo" class="btn btn-just-icon btn-link btn-facebook"><i class="fa fa-facebook-square"></i></a>
+                <a href="#pablo" class="btn btn-just-icon btn-link btn-dribbble"><i class="fa fa-dribbble"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card card-profile card-plain">
+              <div class="card-avatar">
+                <a href="#pablo">
+                  <img class="img" src="../assets/img/chauava.jpg">
+                </a>
+              </div>
+              <div class="card-body">
+                <h4 class="card-title">Hồ Trần Bảo Châu</h4>
+                <h6 class="category text-muted">Y tá 1</h6>
+                <p class="card-description">
+                  Thăm ngàn thăm ngàn thăm ngàn Thăm ngàn thăm ngàn thăm ngàn Thăm ngàn thăm ngàn thăm ngàn
+                </p>
+              </div>
+              
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card card-profile card-plain">
+              <div class="card-avatar">
+                <a href="#pablo">
+                  <img class="img" src="../assets/img/hoangava.jpg">
+                </a>
+              </div>
+              <div class="card-body">
+                <h4 class="card-title">Nguyễn Huy Hoàng</h4>
+                <h6 class="category text-muted">Y tá 2</h6>
+                <p class="card-description">
+                 Thăm ngàn thăm ngàn thăm ngàn Thăm ngàn thăm ngàn thăm ngàn Thăm ngàn thăm ngàn thăm ngàn
+                </p>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="projects-3 section-dark" id="projects-3">
+        
+          <div class="row">
+            <div class="col-md-8 ml-auto mr-auto text-center">
+              <h6 class="category text-muted">Our work</h6>
+              <h2 class="title">Some of Our Awesome Projects - 3</h2>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-5 ml-auto">
+              <div class="card card-plain">
+                <a href="#pablo">
+                  <div class="card-header card-header-image">
+                    <img src="./assets/img/examples/card-project1.jpg">
+                  </div>
+                </a>
+                <div class="card-body ">
+                  <h6 class="card-category">Web Design</h6>
+                  <a href="#pablo">
+                    <h4 class="card-title">Famous Website Redesign</h4>
+                  </a>
+                  <p class="card-description">
+                    Don't be scared of the truth because we need to restart the human foundation in truth.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-5 mr-auto">
+              <div class="card card-plain">
+                <a href="#pablo">
+                  <div class="card-header card-header-image">
+                    <img src="./assets/img/examples/card-project2.jpg">
+                  </div>
+                </a>
+                <div class="card-body ">
+                  <h6 class="card-category">Productivity Tools</h6>
+                  <a href="#pablo">
+                    <h4 class="card-title">Beautiful Desktop for Designers</h4>
+                  </a>
+                  <p class="card-description">
+                    Don't be scared of the truth because we need to restart the human foundation in truth.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-5 ml-auto">
+              <div class="card card-plain">
+                <a href="#pablo">
+                  <div class="card-header card-header-image">
+                    <img src="./assets/img/examples/card-project3.jpg">
+                  </div>
+                </a>
+                <div class="card-body ">
+                  <h6 class="card-category">Android App</h6>
+                  <a href="#pablo">
+                    <h4 class="card-title">Analytics for Android</h4>
+                  </a>
+                  <p class="card-description">
+                    Don't be scared of the truth because we need to restart the human foundation in truth.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-5 mr-auto">
+              <div class="card card-plain">
+                <a href="#pablo">
+                  <div class="card-header card-header-image">
+                    <img src="./assets/img/examples/card-project4.jpg">
+                  </div>
+                </a>
+                <div class="card-body ">
+                  <h6 class="card-category">Website</h6>
+                  <a href="#pablo">
+                    <h4 class="card-title">Behance Redesign</h4>
+                  </a>
+                  <p class="card-description">
+                    Don't be scared of the truth because we need to restart the human foundation in truth.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        
+      </div>
+      <div class="about-office section-dark">
+        <div class="row text-center">
+          <div class="col-md-8 ml-auto mr-auto">
+            <h2 class="title">Our office is our second home</h2>
+            <h4 class="description">Here are some pictures from our office. You can see the place looks like a palace and is fully equiped with everything you need to get the job done.</h4>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <img class="img-raised rounded img-fluid" alt="Raised Image" src="../assets/img/examples/office2.jpg">
+          </div>
+          <div class="col-md-4">
+            <img class="img-raised rounded img-fluid" alt="Raised Image" src="../assets/img/examples/office4.jpg">
+          </div>
+          <div class="col-md-4">
+            <img class="img-raised rounded img-fluid" alt="Raised Image" src="../assets/img/examples/office3.jpg">
+          </div>
+          <div class="col-md-6">
+            <img class="img-raised rounded img-fluid" alt="Raised Image" src="../assets/img/examples/office5.jpg">
+          </div>
+          <div class="col-md-6">
+            <img class="img-raised rounded img-fluid" alt="Raised Image" src="../assets/img/examples/office1.jpg">
+          </div>
+        </div>
+      </div>
+      <div class="about-contact ">
+        <div class="row">
+          <div class="col-md-8 ml-auto mr-auto">
+            <h2 class="text-center title">Want to work with us?</h2>
+            <h4 class="text-center description">Divide details about your product or agency work into parts. Write a few lines about each one and contact us about any further collaboration. We will get back to you in a couple of hours.</h4>
+            <form class="contact-form">
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="name" class="bmd-label-floating">Your name</label>
+                    <input type="text" class="form-control">
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="email" class="bmd-label-floating">Your Email</label>
+                    <input type="email" class="form-control">
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <select class="selectpicker " data-style="select-with-transition" data-size="7">
+                    <option value="1" disabled>Speciality</option>>
+                    <option value="2">I&apos;m a Designer</option>
+                    <option value="3">I&apos;m a Developer</option>
+                    <option value="4">I&apos;m a Hero</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4 ml-auto mr-auto text-center">
+                  <button class="btn btn-primary btn-round">
+                    Let&apos;s talk
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+			
+		</div>
+	</div>
+
+</body>
+</html>

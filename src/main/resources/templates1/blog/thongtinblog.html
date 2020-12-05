@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+	xmlns:layout="http://www.w3.org/1999/xhtml"
+	layout:decorate="~{fragments/user/main_layout}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div class="main main-raised" layout:fragment="content">
+    <div class="container" th:object="${blog}">
+      <div class="section section-text">
+        <div class="row">
+          
+          <div class="col-md-4">
+              <div class="">
+                <img th:src="@{'../assets/img/' + ${blog.images}}" />
+              </div>
+            </div>
+          <div class="col-md-8 ml-auto mr-auto">
+            <h3 class="title text-center" th:text="${blog.title}">Rest of the Story:</h3>
+            <p th:text="${blog.content}"> </p>
+             
+          </div>
+        </div>
+      </div>
+      <div class="section section-blog-info">
+        <div class="row">
+          <div class="col-md-8 ml-auto mr-auto">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="blog-tags">
+                  Tags:
+                  <span class="badge badge-primary badge-pill" th:text="${blog.cate}">Photography</span>
+                  
+                </div>
+              </div>
+              <div class="col-md-6">
+                <a href="#pablo" class="btn btn-google btn-round float-right">
+                  <i class="fa fa-google"></i> 232
+                </a>
+                <a href="#pablo" class="btn btn-twitter btn-round float-right">
+                  <i class="fa fa-twitter"></i> 910
+                </a>
+                <a href="#pablo" class="btn btn-facebook btn-round float-right">
+                  <i class="fa fa-facebook-square"></i> 872
+                </a>
+              </div>
+            </div>
+            <hr>
+            
+          </div>
+        </div>
+      </div>
+     
+    </div>
+  </div>
+</body>
+</html>

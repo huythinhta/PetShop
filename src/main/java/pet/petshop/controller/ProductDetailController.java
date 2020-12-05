@@ -25,14 +25,14 @@ public class ProductDetailController {
 	public String viewHomePage(Model model) {
 		List<Productdetail> listdetail=pds.listALL();
 		model.addAttribute("listdetail",listdetail);
-		return "product/index_productdetail";
+		return "admin/product/index_productdetail";
 	}
 	
 	@RequestMapping("/addproductdetail")
 	public String showNewProductDetail(Model model) {
 		Productdetail productdetail = new Productdetail();
 		model.addAttribute("productdetail",productdetail);
-		return "product/productdetail_add";
+		return "admin/product/productdetail_add";
 	}
 	
 	@RequestMapping(value = "/saveproductdetail",method = RequestMethod.POST)
@@ -43,7 +43,7 @@ public class ProductDetailController {
 	
 	@RequestMapping("/editproductdetail/{id}")
 	public ModelAndView showEditBlog(@PathVariable(name = "id")Integer id) {
-		ModelAndView mav = new ModelAndView("product/productdetail_edit");
+		ModelAndView mav = new ModelAndView("admin/product/productdetail_edit");
 		Productdetail productdetail = pds.get(id);
 		mav.addObject("productdetail", productdetail);
 		return mav;

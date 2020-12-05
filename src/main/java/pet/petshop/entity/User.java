@@ -30,8 +30,6 @@ public class User {
 	
 	@Column(name = "password")
 	@NotBlank(message = "Vui lòng nhập password")
-	@Min(value = 3,message = "Ít nhất 3 kí tự")
-	@Max(value = 11,message = "Nhiều nhất 11 kí tự")
 	@Pattern(regexp = "^\\s*\\S+\\s*$", message = "Không được để khoảng trắng")
 	
 	private String password;

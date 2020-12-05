@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+	xmlns:layout="http://www.w3.org/1999/xhtml"
+	layout:decorate="~{fragments/user/main_layout}">
+<head>
+<meta charset="UTF-8">
+<title>Blog</title>
+</head>
+<body>
+	<div class="main main-raised" layout:fragment="content">
+		<div class="container">
+			<div class="section">
+				<h3 class="title text-center">Blog cho thú cưng</h3>
+				<div class="col-md-8 ml-auto mr-auto">
+					<h5 class="description">We promise to provide a carefully
+						sourced range of products for you and your dog and always at
+						amazing prices. We are always available to answer questions in
+						order to help you find the perfect items for yourself and your
+						loved ones. We provide a 100% money back guarantee on every order.</h5>
+				</div>
+				<br>
+				<div class="row" >
+					<div class="col-md-4" th:each="blog : ${blog}">
+						<div class="card card-plain card-blog">
+							<div class="card-header card-header-image">
+								<a href="#pablo"> <img class="img img-raised"
+									th:src="@{'../assets/img/' + ${blog.images}}">
+								</a>
+							</div>
+							<div class="card-body">
+								<h6 class="card-category text-info" th:text="${blog.datepost}">Cate</h6>
+								<h4 class="card-title">
+									<a th:href="@{'/blog/' + ${blog.id}}" th:text="${blog.title}">Autodesk looks to future of 3D printing
+										with Project Escher</a>
+								</h4>
+								<p class="card-description"th:text="${#strings.abbreviate(blog.content,100)}">
+								
+								</p>
+							</div>
+						</div>
+					</div>
+					
+					
+				</div>
+			</div>
+
+		</div>
+	</div>
+</body>
+</html>

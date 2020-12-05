@@ -36,24 +36,16 @@
                                 </div>
                                 <div class="panel-body">
                                      <form  class="form-horizontal" action="#" th:action="@{/saveproduct}" th:object="${product}" method="post">
-								<div class="form-group">
-									<label for="input-placeholder" class="col-sm-2 control-label">Cate</label>
-									<div class="col-sm-10">
-										 <select
-											name="cate" id="cate" class="form-control"  th:field="*{cate}">
-											<option value="1">Thức ăn</option>
-											<option value="2">Quần áo</option>
-											<option value="3">Dụng cụ vệ sinh</option>
-											<option value="4">Đồ chơi</option>
-											<option value="5">Nhà ở</option>
-										</select>
-									</div>
-								</div>
-								<div class="form-group">
+                                        <div class="form-group">
+                                            <label for="input-placeholder" class="col-sm-2 control-label">Cate</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" th:field="*{cate}" id="input-placeholder" placeholder="Hãy nhập cate">
+                                            </div>
+                                        </div> 
+                                        <div class="form-group">
                                             <label for="input-placeholder" class="col-sm-2 control-label">Name</label>
                                             <div class="col-sm-10">
                                                 <input type="text" th:field="*{name}" class="form-control" id="input-placeholder" placeholder="Hãy nhập name">
-                                                <span style="color: red;" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
                                             </div>
                                         </div> 
                                         
@@ -61,14 +53,12 @@
                                             <label for="input-placeholder" class="col-sm-2 control-label">Brand</label>
                                             <div class="col-sm-10">
                                                 <input type="text" th:field="*{brand}" class="form-control" id="input-placeholder" placeholder="Hãy nhập tên brand">
-                                           		<span style="color: red;" th:if="${#fields.hasErrors('brand')}" th:errors="*{brand}"></span>
                                             </div>
                                         </div> 
                                         <div class="form-group">
                                             <label for="input-placeholder" class="col-sm-2 control-label">Hinh</label>
                                             <div class="col-sm-10">
                                                 <input type="text" th:field="*{images}" class="form-control" id="input-placeholder" placeholder="Nhập email">
-                                            	<span style="color: red;" th:if="${#fields.hasErrors('images')}" th:errors="*{images}"></span>
                                             </div>
                                         </div> 
                                         <div class="form-group">
@@ -81,15 +71,13 @@
                                             <label for="input-placeholder" class="col-sm-2 control-label">Price</label>
                                             <div class="col-sm-10">
                                                 <input type="text" th:field="*{price}" class="form-control" id="input-placeholder" placeholder="Nhập gía">
-                                            	<span style="color: red;" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></span>
                                             </div>
                                         </div> 
                                         
                                          <div class="form-group">
                                             <label for="input-placeholder" class="col-sm-2 control-label">Discount</label>
                                             <div class="col-sm-10">
-                                                <input value="0" type="text" th:field="*{discount}" class="form-control" id="input-placeholder" placeholder="Hãy nhập discount">
-                                            	<span style="color: red;" th:if="${#fields.hasErrors('discount')}" th:errors="*{discount}"></span>
+                                                <input type="text" th:field="*{discount}" class="form-control" id="input-placeholder" placeholder="Hãy nhập discount">
                                             </div>
                                         </div>  
                                         

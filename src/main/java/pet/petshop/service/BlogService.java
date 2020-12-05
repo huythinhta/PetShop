@@ -17,8 +17,8 @@ public class BlogService {
 		return bpo.findAll();
 	}
 	
-	public void save(Blog blog) {
-		bpo.save(blog);
+	public Blog save(Blog blog) {
+		return bpo.save(blog);
 	}
 	
 	public Blog get(Integer id) {

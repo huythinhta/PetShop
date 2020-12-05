@@ -9,25 +9,24 @@
 			<div class="container">
 				<div class="row">
 					 <div class="col-md-6">
-						<div class="top_nav_left">We Are PetLOVE</div>
+						<div class="top_nav_left">Đây là project của nhóm PetLove</div>
 					</div> 
 					<div class="col-md-6 text-right">
 						<div class="top_nav_right">
 							<ul class="top_nav_menu">
 
-								
+								<!-- Currency / Language / My Account -->
 
 								
-								<li class="account" sec:authorize="isAuthenticated()">
-									<a href="#" sec:authentication="name" style="min-width: 100px">
-										</a>
-									<ul class="account_selection" style="min-width: 100px">
-										<li><a href="/admin" sec:authorize="hasRole('ROLE_ADMIN')"><i class="fa fa-sign-in" aria-hidden="true"></i>ADMIN</a></li>
-										<li><a href="/profile" sec:authorize="isAuthenticated()"><i class="fa fa-sign-in" aria-hidden="true"></i>Profile</a></li>
+								<li class="account">
+									<a href="#" sec:authentication="principal.username">
+										
+										<i class="fa fa-angle-down"></i>
+									</a>
+									<ul class="account_selection">
 										<li><a href="/login"><i class="fa fa-sign-in" aria-hidden="true"></i>Sign In</a></li>
 										<li><a href="/registration"><i class="fa fa-user-plus" aria-hidden="true"></i>Register</a></li>
 									</ul>
-									
 								</li>
 							</ul>
 						</div>
@@ -47,17 +46,18 @@
 						</div>
 						<nav class="navbar">
 							<ul class="navbar_menu">
-								<li><a href="/trangchu">Home</a></li>
-								<li><a href="/sanpham">Shop</a></li>
-								<li><a href="/dichvu">Services</a></li>
-								<li><a href="/blog">Blog</a></li>
-								<li><a href="/contact">Contact</a></li>
+								<li><a href="#">Trang chủ</a></li>
+								<li><a href="#">Cửa hàng</a></li>
+								<li><a href="#">Dịch vụ</a></li>
+								<li><a href="#">pages</a></li>
+								<li><a href="#">blog</a></li>
+								<li><a href="contact.html">contact</a></li>
 							</ul>
 							<ul class="navbar_user">
 								<li><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>
 								<li><a href="#"><i class="fa fa-user" aria-hidden="true"></i></a></li>
 								<li class="checkout">
-									<a href="/cart">
+									<a href="#">
 										<i class="fa fa-shopping-cart" aria-hidden="true"></i>
 										<span id="checkout_items" class="checkout_items">2</span>
 									</a>

@@ -24,14 +24,14 @@ public class ServiceCategoriesController {
 	{
 		List<Servicecategories> listservicecategories = sepo.listAll();
 		model.addAttribute("listservicecategories",listservicecategories);
-		return ("cateservice/index");
+		return ("admin/cateservice/index");
 	}
 	
 	@RequestMapping("/newservicecategories")
 	public String showNewServiceCategoriesForm(Model model) {
 		Servicecategories servicecategories = new Servicecategories();
 		model.addAttribute("servicecategories",servicecategories);
-		return "cateservice/new_servicecategories";
+		return "admin/cateservice/new_servicecategories";
 	}
 	
 	@RequestMapping(value = "/saveservicecate", method = RequestMethod.POST)
@@ -42,7 +42,7 @@ public class ServiceCategoriesController {
 		}
 	@RequestMapping("/editservicecate/{id}")
 		public ModelAndView showEditServiceCategoriesForm(@PathVariable(name="id") Integer id) {
-			ModelAndView mav = new ModelAndView("cateservice/edit_servicescategories1");
+			ModelAndView mav = new ModelAndView("admin/cateservice/edit_servicescategories1");
 			Servicecategories servicecategories = sepo.get(id);
 			mav.addObject("servicecategories",servicecategories);
 			

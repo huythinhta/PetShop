@@ -14,8 +14,8 @@ public class ServiceServices {
 	public List<Services> listALl(){
 		return sepo.findAll();
 	}
-	public void save(Services services) {
-		sepo.save(services);
+	public Services save(Services services) {
+		return sepo.save(services);
 	}
 	public Services get(Integer id) {
 		return sepo.findById(id).get();

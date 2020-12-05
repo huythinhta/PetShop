@@ -22,8 +22,8 @@ public class ProductService {
         return pr.getProductsByNameContains(search);
     }
 
-    public void save(Product product) {
-        pr.save(product);
+    public Product save(Product product) {
+       return pr.save(product);
     }
 
     public Product get(Integer id) {

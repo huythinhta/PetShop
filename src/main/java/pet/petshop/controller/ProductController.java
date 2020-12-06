@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import pet.petshop.entity.Product;
+import pet.petshop.entity.Productcategories;
+import pet.petshop.service.ProductCategoryService;
 import pet.petshop.service.ProductService;
 
 @Controller
@@ -17,6 +19,9 @@ public class ProductController {
 
     @Autowired
     private ProductService ps;
+
+    @Autowired
+    private ProductCategoryService pdc;
     
     @RequestMapping("/trangchu")
     public String index2(ModelMap model) {
@@ -25,13 +30,19 @@ public class ProductController {
 	}
 
     @RequestMapping("/product")
-    public String viewHomePage(Model model, @RequestParam(value = "search", defaultValue = "", required = false) String search) {
+    public String viewHomePage(Model model,
+                               @RequestParam(value = "search", defaultValue = "", required = false) String search,
+                               @RequestParam(value = "branch", defaultValue = "", required = false) String branch
+    ) {
         List<Product> product = null;
-        if (search.isEmpty()) {
-            product = ps.listAll();
+
+        if(!branch.isEmpty()){
+            product = ps.getListProductByFilter(search, branch);
         } else {
             product = ps.searchByName(search);
         }
+
+        model.addAttribute("catelogiesFilter", pdc.listALL());
         model.addAttribute("product", product);
         return "product/index_product";
     }
@@ -63,5 +74,7 @@ public class ProductController {
         ps.delete(id);
         return "redirect:/product";
     }
+
+
 }
 

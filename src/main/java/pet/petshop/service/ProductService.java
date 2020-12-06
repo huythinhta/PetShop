@@ -22,6 +22,10 @@ public class ProductService {
         return pr.getProductsByNameContains(search);
     }
 
+    public List<Product> getListProductByFilter(String search, String branch) {
+        return pr.getProductsByNameContainsAndBrand(search, branch);
+    }
+
     public void save(Product product) {
         pr.save(product);
     }

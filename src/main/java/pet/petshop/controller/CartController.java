@@ -78,6 +78,16 @@ public class CartController {
 		session.setAttribute("cart", cart);
 		return "redirect:/cart";
 	}
+	@RequestMapping(value = "delete/{id}", method = RequestMethod.GET)
+	public String delete(@PathVariable("id") int id,  HttpSession session) {
+		@SuppressWarnings("unchecked")
+		List<Item> cart = (List<Item>) session.getAttribute("cart");
+		int index = isExists(id, cart);
+			cart.remove(index);
+		
+		session.setAttribute("cart", cart);
+		return "redirect:/cart";
+	}
 	
 
 	private int isExists(int id, List<Item> cart) {

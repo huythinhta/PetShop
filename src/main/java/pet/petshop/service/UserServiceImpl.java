@@ -31,9 +31,9 @@ public class UserServiceImpl implements UserService {
 		this.userRepository = userRepository;
 	}
 
-	public User Regis(User registrationDto) {
-		User user = new User(registrationDto.getEmail(), passwordEncoder.encode(registrationDto.getPassword()),
-				"ROLE_USER");
+	public User Regis(User us) {
+		User user = new User(us.getId(),us.getEmail(), passwordEncoder.encode(us.getPassword()),
+				"ROLE_USER",us.getName(),us.getPhone(),us.getAddress(),us.getAvatar());
 
 		return userRepository.save(user);
 	}
@@ -59,8 +59,9 @@ public class UserServiceImpl implements UserService {
 		return userRepository.findAll();
 	}
 
-	public void save(User ur) {
-		User user = new User(ur.getEmail(), passwordEncoder.encode(ur.getPassword()), ur.getRole());
+	public void save(User us) {
+		User user = new User(us.getId(),us.getEmail(), passwordEncoder.encode(us.getPassword()),
+				"ROLE_USER",us.getName(),us.getPhone(),us.getAddress(),us.getAvatar());
 		userRepository.save(user);
 	}
 

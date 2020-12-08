@@ -34,6 +34,9 @@ public class indexController {
 
 	@Autowired
 	private BlogService bs;
+	
+	
+	
 
 	@Autowired
 	private UserServiceImpl us;
@@ -65,5 +68,7 @@ public class indexController {
 		model.put("blog", bs.listALL());
 		return "index/blog";
 	}
+	
+	
 
 }

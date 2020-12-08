@@ -57,12 +57,19 @@
 										<td th:text="${bill.date}">name</td>
 										<td th:text="${bill.userid}">cate</td>
 										
-										<td th:text="${bill.status}">Status</td>
+										<th:block th:if="${bill.status == 0}">
+											<td>Chưa hoàn thành</td>
+										</th:block>
+										<th:block th:if="${bill.status == 1}" >
+											<td>Đã hoàn thành</td>
+										</th:block>
 										<td th:text="${bill.totalprice}"></td>
-										
-										<!-- <td><a th:href="@{'/editservice/' + ${services.id}}">edit</a></td>
-										<td><a th:href="@{'/deleteservice/' + ${services.id}}">delte</a>
-										</td> -->
+										<th:block th:if="${bill.status == 0}">
+										 <td><a th:href="@{'/UpdateBillStatus/' + ${bill.id}}">edit</a></td>
+										</th:block>
+										<th:block th:if="${bill.status == 1}">
+										 <td></td>
+										</th:block>
 									</tr>
 								</tbody>
 							</table>

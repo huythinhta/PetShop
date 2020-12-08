@@ -43,9 +43,9 @@
                       <div class="dropdown-menu dropdown-menu-right show">
                         <h6 class="dropdown-header" sec:authorize="isAuthenticated()">Xin chào <span style="color: red;text-transform: uppercase;" sec:authentication="name"></span></h6>
                         <a href="/login" class="dropdown-item" sec:authorize="isAnonymous()">Login</a>
-                        <!-- <a href="/profile" class="dropdown-item" sec:authorize="isAuthenticated()">Profile</a>
+                         <a href="/profile" class="dropdown-item" sec:authorize="isAuthenticated()">Profile</a>
                         <a href="#" class="dropdown-item" sec:authorize="isAuthenticated()">Đổi mật khẩu</a>
-                        <a href="/order" class="dropdown-item" sec:authorize="isAuthenticated()">Lịch sử mua hàng</a> -->
+                        <a href="/order" class="dropdown-item" sec:authorize="isAuthenticated()">Lịch sử mua hàng</a>
                         <div class="dropdown-divider" sec:authorize="hasRole('ROLE_ADMIN')"></div>
                         <a href="/admin" class="dropdown-item" sec:authorize="hasRole('ROLE_ADMIN')">Admin</a>
                         <div class="dropdown-divider" sec:authorize="isAuthenticated()"></div>
@@ -54,7 +54,7 @@
           </li>
          
           <li class="button-container nav-item iframe-extern">
-            <a href="/cart" target="_blank" class="btn  btn-danger   btn-round btn-block">
+            <a href="/cart" class="btn  btn-danger  btn-round btn-block ">
               <i class="material-icons">shopping_cart</i> Cart
             </a>
           </li>

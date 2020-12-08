@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+	xmlns:layout="http://www.w3.org/1999/xhtml"
+	layout:decorate="~{fragments/user/main_layout}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div layout:fragment="content" class="main main-raised">
+		<div class="contactus-1 section-image"
+			style="background-image: url('./assets/img/confirm.jpg')">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-5 ml-auto">
+						<h2 class="title">Get in Touch</h2>
+						<h5 class="description">You need more information? Check what
+							other persons are saying about our product. They are very happy
+							with their purchase.</h5>
+						<table class="table table-bordered"
+							style="table-layout: auto; color: white">
+							<thead class="thead-dark">
+								<tr>
+									<th class="text-right">Product</th>
+									<th class="text-right">Brand</th>
+									<th class="text-right">Price</th>
+									<th class="text-right">Quantity</th>
+									<th class="text-right">Discount</th>
+									<th class="text-right">Amount</th>
+
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="item : ${session.cart}"
+									th:with="price=${item.product.price*item.quantity}">
+									<!-- <td>
+										<div class="img-container">
+											<img th:src="@{'../assets/img/' + ${item.product.images}}"
+												alt="...">
+										</div>
+									</td> -->
+									<td class="text-center"><a th:text="${item.product.name}"></a></td>
+
+									<td th:text="${item.product.brand}" class="text-center"></td>
+									<td class="td-number text-right"
+										th:text="${#numbers.formatDecimal(item.product.price, 3, 'POINT', 0, 'POINT')}"></td>
+
+									<td class="td-number text-center" th:text="${item.quantity}"></td>
+									<td class="td-number text-center"
+										th:text="${item.product.discount}">Giảm giá</td>
+									<td class="td-number"
+										th:text="${#numbers.formatDecimal(price, 3, 'POINT', 0, 'POINT')}"></td>
+
+									<!-- <td class="td-actions"><a
+										th:href="${'/cart/delete/'+item.product.id}" rel="tooltip"
+										data-placement="left" title="Remove item" class="btn btn-link">
+											<i class="material-icons">close</i>
+									</a></td> -->
+								</tr>
+
+
+
+								<tr>
+
+									<td class="td-total text-center" colspan="3">Thành tiền</td>
+									<td colspan="3" class="td-price"
+										th:text="${#numbers.formatDecimal(total, 3, 'POINT', 0, 'POINT')}">
+									</td>
+
+								</tr>
+
+							</tbody>
+						</table>
+
+
+					</div>
+					<div class="col-md-5 ml-auto">
+						<div class="card card-contact">
+							<form id="contact-form" method="post"
+								th:each="user : ${session.user}">
+								<div
+									class="card-header card-header-raised card-header-primary text-center">
+									<h4 class="card-title">Thông tin</h4>
+								</div>
+								<div class="card-body">
+									<div class="form-group label-floating is-empty">
+										<label class="bmd-label-floating">Customer Name</label> <input
+											type="text" class="form-control" th:value="${user.name}" readonly="readonly"> <span
+											class="material-input"></span>
+									</div>
+									<div class="form-group label-floating is-empty">
+										<label class="bmd-label-floating">Phone Number</label> <input
+											type="number" class="form-control" th:value="${user.phone}" readonly="readonly"> <span
+											class="material-input"></span>
+									</div>
+									<div class="form-group label-floating is-empty">
+										<label class="bmd-label-floating">Email</label> <input
+											type="email" name="email" class="form-control" th:value="${user.email}" readonly="readonly"> <span
+											class="material-input"></span>
+									</div>
+									<div class="form-group label-floating is-empty">
+										<label class="bmd-label-floating">Address</label> <input
+											type="email" name="email" class="form-control" th:value="${user.address}" readonly="readonly"> <span
+											class="material-input"></span>
+									</div>
+									
+								</div>
+								<div class="card-footer justify-content-between">
+									<a type="submit" class="btn btn-success" th:href="${'/charge'}">Thanh toán</a>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type = "text/javascript">
+function change_button(checkbx,button_id) {
+    var btn = document.getElementById(button_id);
+    if (checkbx.checked == true) {
+        btn.disabled = "";
+    } else {
+        btn.disabled = "disabled";
+    }
+}
+</script>
+</body>
+</html>

@@ -8,70 +8,88 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div layout:fragment="content" class="main main-raised">
-    <div class="container">
-      <div class="card card-plain">
-        <div class="card-body">
-          <h3 class="card-title">Shopping Cart</h3>
-          <br/>
-          <div class="table-responsive">
-            <table class="table table-shopping">
-              <thead>
-                <tr>
-                  <th class="text-center"></th>
-                  <th>Product</th>
-                  <th>Brand</th>
-                  <th class="text-right">Price</th>
-                  <th class="text-right">Quantity</th>
-                  <th class="text-right">Discount</th>
-                  <th class="text-right">Amount</th>  
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr th:each="item : ${session.cart}" th:with="price=${item.product.price*item.quantity}">
-                  <td>
-                    <div class="img-container">
-                      <img th:src="@{'../assets/img/' + ${item.product.images}}" alt="...">
-                    </div>
-                  </td>
-                  <td class="text-center" >
-                    <a href="#jacket" th:text="${item.product.name}">Spring Jacket</a>
-                  </td>
-                  <td th:text="${item.product.brand}"></td>
-                  <td class="td-number text-right" th:text="${#numbers.formatDecimal(item.product.price, 3, 'POINT', 0, 'POINT')}"></td>
-                  <td class="td-number" th:text="${item.quantity}"> Số lượng</td>
-                  <td class="td-number" th:text="${item.product.discount}">Giảm giá </td>
-                  <td class="td-number" th:text="${#numbers.formatDecimal(price, 3, 'POINT', 0, 'POINT')}"></td>
-                <th><a th:href="${'/cart/remove/'+item.product.id}">Remove</a></th>
-			<th><a th:href="${'/cart/buy/'+item.product.id}">Buy</a></th>
-                  <td class="td-actions">
-                    <a th:href="${'/cart/delete/'+item.product.id}" rel="tooltip" data-placement="left" title="Remove item" class="btn btn-link">
-                      <i class="material-icons">close</i>
-                    </a>
-                  </td>
-                </tr>
-                
-               
-                <tr>
-                  <td colspan="3"></td>
-                  <td class="td-total">
-                    Thành tiền
-                  </td>
-                  <td colspan="1" class="td-price" th:text="${#numbers.formatDecimal(total, 3, 'POINT', 0, 'POINT')}"> 
-                  </td>
-                  <td colspan="1"></td>
-                  <td colspan="2" class="text-right">
-                    <a type="button" class="btn btn-info btn-round" th:href="${'/charge'}">Complete Purchase <i class="material-icons">keyboard_arrow_right</i></a>
-                  </td>
-                </tr>
-                
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+	<div layout:fragment="content" class="main main-raised">
+		<div class="container">
+			<div class="card card-plain">
+				<div class="card-body">
+					<h3 class="card-title">Shopping Cart</h3>
+					<br />
+					<div class="table-responsive">
+						<table class="table table-shopping">
+							<thead>
+								<tr>
+									<th class="text-center"></th>
+									<th>Product</th>
+									<th>Brand</th>
+									<th class="text-right">Price</th>
+									
+									<th class="text-right"></th>
+									<th>Quantity</th>
+									<th></th>
+									<th class="text-right">Discount</th>
+									<th class="text-right">Amount</th>
+									<th></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="item : ${session.cart}"
+									th:with="price=${item.product.price*item.quantity}">
+									<td>
+										<div class="img-container">
+											<img th:src="@{'../assets/img/' + ${item.product.images}}"
+												alt="...">
+										</div>
+									</td>
+									<td class="text-center"><a href="#jacket"
+										th:text="${item.product.name}">Spring Jacket</a></td>
+									<td th:text="${item.product.brand}"></td>
+									<td class="td-number text-right"
+										th:text="${#numbers.formatDecimal(item.product.price, 3, 'POINT', 0, 'POINT')}"></td>
+									
+									<td class="td-number" colspan="3">
+
+										<div class="btn-group ">
+											<a class="btn btn-round btn-info btn-sm" th:href="${'/cart/remove/'+item.product.id}">
+												<i class="material-icons">remove</i>
+											</a>
+											<div style="margin: 10px;" th:text="${item.quantity}"></div>
+											<a class="btn btn-round btn-info btn-sm" th:href="${'/cart/buy/'+item.product.id}">
+												<i class="material-icons">add</i>
+											</a>
+										</div>
+									</td>
+									<td class="td-number" th:text="${item.product.discount}">Giảm
+										giá</td>
+									<td class="td-number"
+										th:text="${#numbers.formatDecimal(price, 3, 'POINT', 0, 'POINT')}"></td>
+
+									<td class="td-actions"><a
+										th:href="${'/cart/delete/'+item.product.id}" rel="tooltip"
+										data-placement="left" title="Remove item" class="btn btn-link">
+											<i class="material-icons">close</i>
+									</a></td>
+								</tr>
+
+
+								<tr>
+									<td colspan="3"></td>
+									<td class="td-total">Thành tiền</td>
+									<td colspan="1" class="td-price"
+										th:text="${#numbers.formatDecimal(total, 3, 'POINT', 0, 'POINT')}">
+									</td>
+									<td colspan="1"></td>
+									<td colspan="2" class="text-right"><a type="button"
+										class="btn btn-info btn-round" href="/confirm">Complete
+											Purchase <i class="material-icons">keyboard_arrow_right</i>
+									</a></td>
+								</tr>
+
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

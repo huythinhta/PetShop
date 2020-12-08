@@ -59,6 +59,7 @@ public class BillController {
 		for (int i = 0; i < bifs.size(); i++) {
 			bis.save(bifs.get(i));
 		}
+		session.removeAttribute("cart");
 		return "index/index";
 	}
 

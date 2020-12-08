@@ -68,6 +68,7 @@ public class CartController {
 		@SuppressWarnings("unchecked")
 		List<Item> cart = (List<Item>) session.getAttribute("cart");
 		int index = isExists(id, cart);
+		
 		if(cart.get(index).getQuantity()==1) {
 			cart.remove(index);
 		}else

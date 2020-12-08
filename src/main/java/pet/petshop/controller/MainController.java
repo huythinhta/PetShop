@@ -37,6 +37,7 @@ public class MainController {
 	public String login() {
 		return "login";
 	}
+
 	@RequestMapping("/editprofile")
 	public String editprofile(ModelMap model,HttpSession session) {
 		User us = (User) session.getAttribute("user");
@@ -44,10 +45,9 @@ public class MainController {
 		model.addAttribute("user",session.getAttribute("user"));
 		return "profile/edit_profile";
 	}
+
 	@RequestMapping("/changepassword")
 	public String changePassword(ModelMap model,HttpSession session) {
-		User us = (User) session.getAttribute("user");
-		us.setPassword("");	
 		model.addAttribute("user",session.getAttribute("user"));
 		return "changepassword";
 	}

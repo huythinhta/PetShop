@@ -55,6 +55,7 @@
 									<tr th:each="bill : ${billadmin}">
 										<td th:text="${bill.id}">Service id</td>
 										<td th:text="${bill.date}">name</td>
+<<<<<<< HEAD
 										<td th:text="${bill.userid}">cate</td>
 										
 										<th:block th:if="${bill.status == 0}">
@@ -70,6 +71,14 @@
 										<th:block th:if="${bill.status == 1}">
 										 <td></td>
 										</th:block>
+=======
+										<td th:text="${bill.user.email}">cate</td>
+										<td th:text="${bill.user.phone}">cate</td>
+										<td th:text="${bill.status}">Status</td>
+										<td th:text="${bill.totalprice}"></td>
+										
+										<td><a th:href="@{'/UpdateBillStatus/' + ${bill.id}}">edit</a></td>
+>>>>>>> 8d1ae61fc39ef2b4d08cc708c8eb209a656483a9
 									</tr>
 								</tbody>
 							</table>

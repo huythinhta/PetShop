@@ -59,7 +59,7 @@
 									<tr th:each="services : ${listServices}">
 										<td th:text="${services.id}">Service id</td>
 										<td th:text="${services.name}">name</td>
-										<td th:text="${services.cate}">cate</td>
+										<td th:text="${services.cate.name}">cate</td>
 										<td th:text="${services.price}">price</td>
 										<td th:text="${services.images}">images</td>
 										<td th:text="${services.status}">Status</td>

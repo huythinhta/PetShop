@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -16,12 +18,14 @@ public class Bill {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private Date date;
-	private int userid;
 	private int status;
 	private int totalprice;
 	@OneToMany(mappedBy = "bill",cascade = CascadeType.ALL)
 	private Collection<BillInfo> billInfo;
 	
+	@ManyToOne
+	@JoinColumn(name = "userid",insertable=false, updatable=false )
+	private User user;
 	public Bill() {
 		// TODO Auto-generated constructor stub
 	}
@@ -37,11 +41,12 @@ public class Bill {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-	public int getUserid() {
-		return userid;
+	
+	public User getUser() {
+		return user;
 	}
-	public void setUserid(int userid) {
-		this.userid = userid;
+	public void setUser(User user) {
+		this.user = user;
 	}
 	public int getStatus() {
 		return status;

@@ -31,9 +31,9 @@ public class UserServiceImpl implements UserService {
 		this.userRepository = userRepository;
 	}
 
-	public User Regis(User us) {
-		User user = new User(us.getId(),us.getEmail(), passwordEncoder.encode(us.getPassword()),
-				"ROLE_USER",us.getName(),us.getPhone(),us.getAddress(),us.getAvatar());
+	public User Regis(User registrationDto) {
+		User user = new User(registrationDto.getEmail(), passwordEncoder.encode(registrationDto.getPassword()),
+				"ROLE_USER",registrationDto.getName(),registrationDto.getPhone(),registrationDto.getAddress());
 
 		return userRepository.save(user);
 	}
@@ -55,24 +55,7 @@ public class UserServiceImpl implements UserService {
 		return user;
 	}
 
-	public List<User> listAll() {
-		return userRepository.findAll();
-	}
-
-	public void save(User us) {
-		User user = new User(us.getId(),us.getEmail(), passwordEncoder.encode(us.getPassword()),
-				"ROLE_USER",us.getName(),us.getPhone(),us.getAddress(),us.getAvatar());
-		userRepository.save(user);
-	}
-
-	public User get(int id) {
-		return userRepository.findById(id).get();
-	}
-
-	public void delete(int id) {
-		userRepository.deleteById(id);
-	}
-
+	
 	public Optional<User> findUserByEmail(String email) {
 		return userRepository.findUserByEmail(email);
 	}

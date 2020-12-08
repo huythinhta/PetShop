@@ -43,10 +43,9 @@
                   <td class="td-number" th:text="${item.quantity}"> Số lượng</td>
                   <td class="td-number" th:text="${item.product.discount}">Giảm giá </td>
                   <td class="td-number" th:text="${#numbers.formatDecimal(price, 3, 'POINT', 0, 'POINT')}"></td>
-                <th><a th:href="${'/cart/remove/'+item.product.id}">Remove</a></th>
-			<th><a th:href="${'/cart/buy/'+item.product.id}">Buy</a></th>
+                
                   <td class="td-actions">
-                    <a th:href="${'/cart/delete/'+item.product.id}" rel="tooltip" data-placement="left" title="Remove item" class="btn btn-link">
+                    <a th:href="${'/cart/remove/'+item.product.id}" rel="tooltip" data-placement="left" title="Remove item" class="btn btn-link">
                       <i class="material-icons">close</i>
                     </a>
                   </td>

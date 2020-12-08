@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -22,6 +24,9 @@ public class Bill {
 	@OneToMany(mappedBy = "bill",cascade = CascadeType.ALL)
 	private Collection<BillInfo> billInfo;
 	
+	@ManyToOne
+	@JoinColumn(name = "userid" )
+	private User user;
 	public Bill() {
 		// TODO Auto-generated constructor stub
 	}

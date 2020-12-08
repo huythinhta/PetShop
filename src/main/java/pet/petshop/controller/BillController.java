@@ -49,7 +49,7 @@ public class BillController {
 			Item item = cart.get(i);
 			total += item.getQuantity() * item.getProduct().getPrice();
 			BillInfo bi = new BillInfo();
-			bi.setIdproduct(item.getProduct().getId());
+			bi.setProduct(item.getProduct());
 			bi.setCountItem(item.getQuantity());
 			bi.setBill(bill);
 			bifs.add(bi);

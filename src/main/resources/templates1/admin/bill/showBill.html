@@ -60,9 +60,7 @@
 										<td th:text="${bill.status}">Status</td>
 										<td th:text="${bill.totalprice}"></td>
 										
-										<!-- <td><a th:href="@{'/editservice/' + ${services.id}}">edit</a></td>
-										<td><a th:href="@{'/deleteservice/' + ${services.id}}">delte</a>
-										</td> -->
+										<td><a th:href="@{'/UpdateBillStatus/' + ${bill.id}}">edit</a></td>
 									</tr>
 								</tbody>
 							</table>

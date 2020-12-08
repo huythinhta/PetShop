@@ -55,7 +55,7 @@
 									<tr th:each="billinfo : ${billinfo}">
 										<td th:text="${billinfo.id}">Service id</td>
 										<td th:text="${billinfo.Bill.id}">name</td>
-										<td th:text="${billinfo.idproduct}">cate</td>
+										<td th:text="${billinfo.product.name}">cate</td>
 										
 										<td th:text="${billinfo.countItem}">Status</td>
 										

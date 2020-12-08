@@ -39,4 +39,14 @@ public class adminBillController {
 		return "admin/bill/billinfo";
 	}
 	
+	@RequestMapping("/UpdateBillStatus/{id}")
+	public String UpdateBill(@PathVariable(name = "id") int id) {
+		Bill b = bill.get(id);
+		b.setStatus(1);
+		bill.save(b);
+		return "redirect:/adminbill";
+	}
+	
+	
+	
 }

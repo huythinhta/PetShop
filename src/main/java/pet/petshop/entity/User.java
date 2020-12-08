@@ -57,6 +57,27 @@ public class User {
 		// TODO Auto-generated constructor stub
 	}
 
+	
+	
+
+
+	public User(
+			@Email(message = "Địa chỉ không hợp lệ") @Pattern(regexp = "^\\s*\\S+\\s*$", message = "Không được để khoảng trắng") @NotBlank(message = "Vui lòng nhập Email") String email,
+			@NotBlank(message = "Vui lòng nhập password") @Pattern(regexp = "^\\s*\\S+\\s*$", message = "Không được để khoảng trắng") String password,
+			String role, String name, String phone, String address) {
+		super();
+		this.email = email;
+		this.password = password;
+		this.role = role;
+		this.name = name;
+		this.phone = phone;
+		this.address = address;
+	}
+
+
+
+
+
 	public int getId() {
 		return id;
 	}

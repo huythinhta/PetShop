@@ -33,7 +33,7 @@ public class UserServiceImpl implements UserService {
 
 	public User Regis(User registrationDto) {
 		User user = new User(registrationDto.getEmail(), passwordEncoder.encode(registrationDto.getPassword()),
-				"ROLE_USER");
+				"ROLE_USER",registrationDto.getName(),registrationDto.getPhone(),registrationDto.getAddress());
 
 		return userRepository.save(user);
 	}
@@ -55,23 +55,7 @@ public class UserServiceImpl implements UserService {
 		return user;
 	}
 
-	public List<User> listAll() {
-		return userRepository.findAll();
-	}
-
-	public void save(User ur) {
-		User user = new User(ur.getEmail(), passwordEncoder.encode(ur.getPassword()), ur.getRole());
-		userRepository.save(user);
-	}
-
-	public User get(int id) {
-		return userRepository.findById(id).get();
-	}
-
-	public void delete(int id) {
-		userRepository.deleteById(id);
-	}
-
+	
 	public Optional<User> findUserByEmail(String email) {
 		return userRepository.findUserByEmail(email);
 	}

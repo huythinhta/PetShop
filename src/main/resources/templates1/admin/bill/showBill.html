@@ -55,8 +55,8 @@
 									<tr th:each="bill : ${billadmin}">
 										<td th:text="${bill.id}">Service id</td>
 										<td th:text="${bill.date}">name</td>
-										<td th:text="${bill.userid}">cate</td>
-										
+										<td th:text="${bill.user.email}">cate</td>
+										<td th:text="${bill.user.phone}">cate</td>
 										<td th:text="${bill.status}">Status</td>
 										<td th:text="${bill.totalprice}"></td>
 										

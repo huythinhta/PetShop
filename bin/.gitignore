@@ -31,3 +31,9 @@ build/
 
 ### VS Code ###
 .vscode/
+/PetShop/
+/database.sql
+/mvnw
+/mvnw.cmd
+/pom.xml
+/src/

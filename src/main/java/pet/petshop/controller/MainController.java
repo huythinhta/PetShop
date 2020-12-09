@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import pet.petshop.entity.Item;
 import pet.petshop.entity.User;
+import pet.petshop.service.BillService;
 import pet.petshop.service.ProductService;
 import pet.petshop.service.UserServiceImpl;
 import pet.petshop.service.UsersService;
@@ -32,7 +33,8 @@ public class MainController {
 
 	    return new BCryptPasswordEncoder();
 	}
-	
+	@Autowired
+	private BillService bs;
 	@GetMapping("/login")
 	public String login() {
 		return "login";
@@ -88,7 +90,12 @@ public class MainController {
 		return("index/confirm");
 	}
 	
-	
+	@RequestMapping("billhistory")
+	public String billhistory(ModelMap model,HttpSession session) {
+		User user = (User) session.getAttribute("user");
+		model.addAttribute("history",bs.BillByUser(user));
+		return "profile/billhistory";
+	}
 	
 	
 	

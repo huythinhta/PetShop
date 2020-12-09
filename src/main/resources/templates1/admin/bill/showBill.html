@@ -61,18 +61,23 @@
 										<td th:text="${bill.user.phone}">cate</td>
 										
 										<th:block th:if="${bill.status == 0}">
-											<td>Chưa hoàn thành</td>
+											<td>Chưa xử lý</td>
 										</th:block>
 										<th:block th:if="${bill.status == 1}" >
+											<td>Đang xử lý</td>
+										</th:block>
+										<th:block th:if="${bill.status == 2}" >
 											<td>Đã hoàn thành</td>
 										</th:block>
+										<th:block th:if="${bill.status == 3}" >
+											<td>Huỷ</td>
+										</th:block>
 										<td th:text="${bill.totalprice}"></td>
-										<th:block th:if="${bill.status == 0}">
+										
 										 <td><a th:href="@{'/UpdateBillStatus/' + ${bill.id}}">Done</a></td>
-										</th:block>
-										<th:block th:if="${bill.status == 1}">
-										 <td></td>
-										</th:block>
+										
+										
+										<td><a th:href="@{'/Bill/' + ${bill.id}}">Detail Bill</a></td>
 									</tr>
 								</tbody>
 							</table>

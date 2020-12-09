@@ -84,6 +84,11 @@
 									<h4 class="card-title">Thông tin</h4>
 								</div>
 								<div class="card-body">
+								<div class="form-group label-floating is-empty hidden">
+										<label class="bmd-label-floating">Customer Name</label> <input
+											type="text" class="form-control" th:value="${user.id}" readonly="readonly"> <span
+											class="material-input"></span>
+									</div>
 									<div class="form-group label-floating is-empty">
 										<label class="bmd-label-floating">Customer Name</label> <input
 											type="text" class="form-control" th:value="${user.name}" readonly="readonly"> <span
@@ -116,15 +121,6 @@
 			</div>
 		</div>
 	</div>
-	<script type = "text/javascript">
-function change_button(checkbx,button_id) {
-    var btn = document.getElementById(button_id);
-    if (checkbx.checked == true) {
-        btn.disabled = "";
-    } else {
-        btn.disabled = "disabled";
-    }
-}
-</script>
+	
 </body>
 </html>

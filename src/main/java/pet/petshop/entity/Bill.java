@@ -18,6 +18,7 @@ public class Bill {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private Date date;
+	
 	private int status;
 	private int totalprice;
 	@OneToMany(mappedBy = "bill",cascade = CascadeType.ALL)
@@ -29,6 +30,7 @@ public class Bill {
 	public Bill() {
 		// TODO Auto-generated constructor stub
 	}
+	
 	public int getId() {
 		return id;
 	}

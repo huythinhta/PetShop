@@ -30,6 +30,8 @@ public class BillController {
 	private BillService bs;
 	@Autowired
 	private BillInfoService bis;
+	
+	
 
 	@RequestMapping("/charge")
 	public String Charge(HttpSession session) throws ParseException {
@@ -56,6 +58,7 @@ public class BillController {
 		}
 		bill.setTotalprice(total);
 		bs.save(bill);
+		System.out.print(bill);
 		for (int i = 0; i < bifs.size(); i++) {
 			bis.save(bifs.get(i));
 		}

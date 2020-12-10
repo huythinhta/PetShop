@@ -25,14 +25,14 @@ public class ProductcategoriesController {
             productcategories = pds.findCategoriesByName(search);
         }
         model.addAttribute("productcategories", productcategories);
-        return "product/index_productcategories";
+        return "admin/product/index_productcategories";
     }
 
     @RequestMapping("/newproductcategories")
     public String newproductcategories(Model model) {
         Productcategories Productcategories = new Productcategories();
         model.addAttribute("Productcategories", Productcategories);
-        return "product/productcategories_add";
+        return "admin/product/productcategories_add";
     }
 
     @RequestMapping(value = "/saveproductcategories", method = RequestMethod.POST)
@@ -43,7 +43,7 @@ public class ProductcategoriesController {
 
     @RequestMapping("/editproductcategories/{id}")
     public ModelAndView showEditproductcategories(@PathVariable(name = "id") Integer id) {
-        ModelAndView mav = new ModelAndView("product/productcategories_edit");
+        ModelAndView mav = new ModelAndView("admin/product/productcategories_edit");
         Productcategories productcategories = pds.get(id);
         mav.addObject("productcategories", productcategories);
 

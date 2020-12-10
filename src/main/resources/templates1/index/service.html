@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+	xmlns:layout="http://www.w3.org/1999/xhtml"
+	layout:decorate="~{fragments/user/main_layout}">
+<head>
+<meta charset="UTF-8">
+<title>Service</title>
+</head>
+<body>
+	<div layout:fragment="content" class="main main-raised">
+	<div class="container">
+      <div class="section">
+        <div class="row">
+         <div class="col-md-6" th:each="ser : ${service}">
+            <div class="card card-raised card-background" th:style="'background-image: url(/assets/img/' + ${ser.images} + ');min-height:303px'">
+            
+              <div class="card-body">
+                <h6 class="card-category text-info">Dịch vụ</h6>
+                <a href="#pablo">
+                  <h3 class="card-title" th:text="${ser.name}">Name</h3>
+                </a>
+                <p class="card-description" th:text="${ser.description}">
+                  
+                </p>
+                <a th:href="@{'/dichvu/' + ${ser.id}}" class="btn btn-danger btn-round">
+                  <i class="material-icons">format_align_left</i> Xem
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          
+        </div>
+      </div>
+      
+    </div>
+	</div>
+</body>
+</html>

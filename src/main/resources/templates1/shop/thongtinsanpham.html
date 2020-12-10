@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+	xmlns:layout="http://www.w3.org/1999/xhtml"
+	layout:decorate="~{fragments/user/main_layout}">
+<head>
+<meta charset="UTF-8">
+<title>Thông tin sản phẩm</title>
+</head>
+<body class="product-page sidebar-collapse">
+	<div layout:fragment="content" class="section">
+		<div class="container">
+			<div class="main main-raised main-product">
+				<div class="row" th:object="${product}">
+					<div class="col-md-6 col-sm-6">
+						<div class="tab-content">
+							<div id="product-page1">
+								<img th:src="@{'../assets/img/' + ${product.images}}">
+							</div>
+							
+						</div>
+						
+					</div>
+					<div class="col-md-6 col-sm-6">
+						<h2 class="title" th:text="${product.name}"></h2>
+						<h3 class="main-price" style="color: red;font-weight: bolder;" th:text="${product.price} + ' vnđ'"></h3>
+						<div id="accordion" role="tablist">
+							<div class="card card-collapse" th:object="${productdetail}">
+								<div class="card-header" role="tab" id="headingOne">
+									<h5 class="mb-0">
+										<a data-toggle="collapse" href="#collapseOne"
+											aria-expanded="true" aria-controls="collapseOne"> Mô tả
+											sản phẩm <i class="material-icons">keyboard_arrow_down</i>
+										</a>
+									</h5>
+								</div>
+								<div id="collapseOne" class="collapse show" role="tabpanel"
+									aria-labelledby="headingOne" data-parent="#accordion">
+									<div class="card-body">
+										<p th:text="${productdetail.description}"></p>
+									</div>
+								</div>
+							</div>
+
+							<div class="card card-collapse" th:object="${productdetail}">
+								<div class="card-header" role="tab" id="headingThree">
+									<h5 class="mb-0">
+										<a class="collapsed" data-toggle="collapse"
+											href="#collapseThree" aria-expanded="false"
+											aria-controls="collapseThree"> Chi tiết sản phẩm <i
+											class="material-icons">keyboard_arrow_down</i>
+										</a>
+									</h5>
+								</div>
+								<div id="collapseThree" class="collapse" role="tabpanel"
+									aria-labelledby="headingThree" data-parent="#accordion">
+									<div class="card-body">
+										<ul>
+											<li th:text="'Dành cho : '+ *{typeofpet}"></li>
+											<li th:text="'Lứa tuổi : '+ *{stage}"></li>
+											<li th:text="'Chiều cao : '+ *{height}"></li>
+											<li th:text="'Chiều rộng : '+*{width}"></li>
+											<li th:text="'Chiều dài : '+*{length}"></li>
+											
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="row pull-right">
+							<a class="btn btn-danger btn-round" type="submit" th:href="${'/cart/buy/'+product.id}">
+								Add to Cart &#xA0;<i class="material-icons">shopping_cart</i>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="features text-center">
+				<div class="row">
+					<div class="col-md-4">
+						<div class="info">
+							<div class="icon icon-info">
+								<i class="material-icons">local_shipping</i>
+							</div>
+							<h4 class="info-title">2 Days Delivery</h4>
+							<p>Divide details about your product or agency work into
+								parts. Write a few lines about each one. A paragraph describing
+								a feature will be enough.</p>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="info">
+							<div class="icon icon-success">
+								<i class="material-icons">verified_user</i>
+							</div>
+							<h4 class="info-title">Refundable Policy</h4>
+							<p>Divide details about your product or agency work into
+								parts. Write a few lines about each one. A paragraph describing
+								a feature will be enough.</p>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="info">
+							<div class="icon icon-rose">
+								<i class="material-icons">favorite</i>
+							</div>
+							<h4 class="info-title">Popular Item</h4>
+							<p>Divide details about your product or agency work into
+								parts. Write a few lines about each one. A paragraph describing
+								a feature will be enough.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+</body>
+</html>

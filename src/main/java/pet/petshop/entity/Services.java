@@ -1,18 +1,46 @@
 package pet.petshop.entity;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 @Entity
+@Table(name = "services")
 public class Services {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
+	//@Pattern(regexp="^[a-zÁ-Z0-9\s]*$", message = "Không chứa kí tự đặc biệt")
+	@Size(min = 3, max = 30, message = "Ít nhất 3 kí tự, nhiều nhất 11 kí tự")
+	@NotBlank(message = "Hãy nhập tên sản phẩm")
+	@Column(name = "name")
 	private String name;
+	
+	@Column(name = "cate")
 	private Integer cate;
+	
+	@NotNull(message = "Hãy nhập giá")
+	@Column(name = "price")
 	private Integer price;
+	
+	@Column(name = "images")
 	private String images;
+	
+	@Column(name = "status")
 	private boolean status;
+	
+	@NotBlank(message = "Hãy nhập thông tin")
+	@Column(name = "description")
 	private String description;
+	
+	@Column(name = "discount")
 	private Integer discount;
 	public Services() {
 		super();

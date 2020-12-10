@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+	xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{fragments/user1/main_layout}" >
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+  <!-- CSS Files -->
+  <link href="assets/css/material-kit.css?v=2.1.1" rel="stylesheet" />
+  
+</head>
+<body>
+	<div layout:fragment="content" >
+	<div class="main main-raised">
+    <div class="section">
+      <div class="container">
+        <h2 class="section-title">Latest Offers</h2>
+        <div class="row">
+          <div class="col-md-4" th:each="pr,pStat : ${product}" th:unless="${pStat.index > 5}">
+            <div class="card card-product card-plain">
+              <div class="card-header card-header-image">
+                <a href="#pablo">
+                  <img src="user1/images/Dog Bed Sleepy Deluxe Teddy.jpg" alt="">
+                </a>
+              </div>
+              <div class="card-body text-center">
+                <h4 class="card-title">
+                  <a href="#pablo" th:text="${pr.name}"></a>
+                </h4>
+                <p class="card-description price price-new" th:text="${pr.price}"></p>
+              </div>
+              <div class="card-footer">
+                
+                  
+              <button class="btn btn-rose btn-round container">Add to Cart &#xA0;<i class="material-icons">shopping_cart</i></button>
+           		 
+                
+              
+            </div>
+          </div>
+          
+          
+        </div>
+       
+      </div>
+    </div>
+    <!-- section -->
+    
+    <!-- section -->
+  </div>
+  </div>
+	</div>
+</body>
+</html>

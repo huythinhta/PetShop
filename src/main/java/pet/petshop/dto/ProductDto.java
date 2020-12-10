@@ -17,7 +17,28 @@ public class ProductDto {
   private String stage;
   private String description;
 
-  public Integer getId() {
+  
+  public ProductDto(Integer id, String name, String brand, String images, String status, Integer price, Integer discount,
+		Integer category, Integer height, Integer width, Integer length, String typeOfPet, String stage,
+		String description) {
+	super();
+	this.id = id;
+	this.name = name;
+	this.brand = brand;
+	this.images = images;
+	this.status = status;
+	this.price = price;
+	this.discount = discount;
+	this.category = category;
+	this.height = height;
+	this.width = width;
+	this.length = length;
+	this.typeOfPet = typeOfPet;
+	this.stage = stage;
+	this.description = description;
+}
+
+public Integer getId() {
     return id;
   }
 

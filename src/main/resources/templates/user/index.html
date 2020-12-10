@@ -1,80 +1,79 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.w3.org/1999/xhtml"
-      layout:decorate="~{fragments/admin/main_layout}">
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.w3.org/1999/xhtml"
+	layout:decorate="~{fragments/admin/main_layout}">
 <head>
-    <meta charset="UTF-8">
-    <title>Insert title here</title>
+<meta charset="UTF-8">
+<title>Insert title here</title>
 </head>
 <body>
-<div layout:fragment="content" class="page-inner">
-    <div id="main-wrapper">
-        <div class="col-md-12">
-            <div class="row m-t-md">
-                <div class="row mailbox-header">
-                    <div class="col-md-2">
-                        <a href="/new" class="btn btn-success btn-block">Thêm user</a>
-                    </div>
+	<div layout:fragment="content" class="page-inner">
+		<div id="main-wrapper">
+			<div class="col-md-12">
+				<div class="row m-t-md">
+					<div class="row mailbox-header">
+						<div class="col-md-2">
+							<a href="/new" class="btn btn-success btn-block">Thêm user</a>
+						</div>
 
-                    <div class="col-md-10">
-                        <form action="/user" method="GET">
-                            <div class="input-group">
-                                <input type="text" name="search"
-                                       class="form-control input-search"
-                                       placeholder="Search by email ...">
-                                <span class="input-group-btn">
-										<button class="btn btn-success" type="submit">
+						<div class="col-md-10">
+							<form action="#" method="GET">
+								<div class="input-group">
+									<input type="text" name="search"
+										class="form-control input-search" placeholder="Search...">
+									<span class="input-group-btn">
+										<button class="btn btn-success" type="button">
 											<i class="fa fa-search"></i>
 										</button>
 									</span>
-                            </div>
-                            <!-- Input Group -->
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <div class="panel panel-white">
-                <div class="panel-heading clearfix">
-                    <h4 class="panel-title">Danh sách User</h4>
-                </div>
-                <div class="panel-body">
-                    <div class="table-responsive">
-                        <table id="example" class="display table"
-                               style="width: 100%; cellspacing: 0;">
-                            <thead>
-                            <tr>
-                                <th>Id</th>
-                                <th>Email</th>
-                                <th>Password</th>
-                                <th>Role</th>
-                                <th>Action</th>
-                                <th></th>
-                            </tr>
-                            </thead>
-
-                            <tbody>
-                            <tr th:each="user : ${users}">
-                                <td th:text="${user.id}">id</td>
-                                <td th:text="${user.email}">email</td>
-                                <td th:text="${user.password}">password</td>
-                                <td th:text="${user.role}">role</td>
-                                <td><a th:href="@{'/editUser/' + ${user.id}}">Edit</a>
-                                <td>
-                                <td><a th:href="@{'/deleteUser/' + ${user.id}}">delete</a></td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+								</div>
+								<!-- Input Group -->
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="panel panel-white">
+					<div class="panel-heading clearfix">
+						<h4 class="panel-title">Danh sách User</h4>
+					</div>
+					<div class="panel-body">
+						<div class="table-responsive">
+							<table id="example" class="display table"
+								style="width: 100%; cellspacing: 0;">
+								<thead>
+									<tr>
+										<th>Id</th>
+										<th>Email</th>
+										<th>Password</th>
+										<th>Role</th>
+										<th>Action</th>
+										<th></th>
+									</tr>
+								</thead>
+								
+								<tbody>
+									<tr th:each="user : ${users}">
+										<td th:text="${user.id}">id</td>
+										<td th:text="${user.email}">email</td>
+										<td th:text="${user.password}">password</td>
+										<td th:text="${user.role}">role</td>
+										<td><a th:href="@{'/editUser/' + ${user.id}}">Edit</a>
+										<td>
+										<td><a th:href="@{'/deleteUser/' + ${user.id}}">delete</a></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
 </body>
 </html>

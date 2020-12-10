@@ -5,7 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import pet.petshop.entity.User;
@@ -18,15 +21,10 @@ public class UserController {
 	private UsersService us;
 	
 	@RequestMapping("/user")
-	public String index(Model model, @RequestParam(value = "search", required = false, defaultValue = "") String search) {
-		List<User> list = null;
-		if(search.isEmpty()){
-			list = us.listAll();
-		} else {
-			list = us.findAllByEmailContain(search);
-		}
+	public String index(Model model) {
+		List<User> list = us.listAll();
 		model.addAttribute("users",list);
-		return "user/index";
+		return "admin/user/index";
 	}
 	
 	@RequestMapping("/new")
@@ -34,7 +32,7 @@ public class UserController {
 	    User user = new User();
 	    model.addAttribute("user", user);
 	     
-	    return "user/new";
+	    return "admin/user/new";
 	}
 	
 	@RequestMapping(value = "/saveUser", method = RequestMethod.POST)
@@ -46,7 +44,7 @@ public class UserController {
 	
 	@RequestMapping("/editUser/{id}")
 	public ModelAndView showEditUserPage(@PathVariable(name = "id") int id) {
-	    ModelAndView mav = new ModelAndView("user/edit_user");
+	    ModelAndView mav = new ModelAndView("admin/user/edit_user");
 	    User user = us.get(id);
 	    mav.addObject("user", user);
 	     

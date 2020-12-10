@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<nav th:fragment="navbar" class="navbar navbar-color-on-scroll navbar-transparent    fixed-top  navbar-expand-lg " color-on-scroll="100" id="sectionsNav">
+    <div class="container">
+      <div class="navbar-translate">
+        <a class="navbar-brand" href="https://demos.creative-tim.com/material-kit-pro/index.html">
+          Pet<span style="color: salmon">LOVE</span> </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+      <div class="collapse navbar-collapse" >
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a href="/" class=" nav-link">
+              <i class="material-icons">home</i> Home
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/shop" class=" nav-link">
+              <i class="material-icons">store</i> Shop
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/service" class=" nav-link">
+              <i class="material-icons">spa</i> Services
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/blog" class=" nav-link">
+              <i class="material-icons">pets</i> Blog
+            </a>
+          </li>
+          <li class="dropdown nav-item show">
+                      <a href="#pablo" class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false">
+                        <i class="material-icons">account_circle</i>
+                        <b class="caret"></b>
+                      <div class="ripple-container"></div></a>
+                      <div class="dropdown-menu dropdown-menu-right show">
+                        <h6 class="dropdown-header" sec:authorize="isAuthenticated()">Xin chào <span style="color: red;text-transform: uppercase;" sec:authentication="name"></span></h6>
+                        <a href="/login" class="dropdown-item" sec:authorize="isAnonymous()">Login</a>
+                        <!-- <a href="/profile" class="dropdown-item" sec:authorize="isAuthenticated()">Profile</a>
+                        <a href="#" class="dropdown-item" sec:authorize="isAuthenticated()">Đổi mật khẩu</a>
+                        <a href="/order" class="dropdown-item" sec:authorize="isAuthenticated()">Lịch sử mua hàng</a> -->
+                        <div class="dropdown-divider" sec:authorize="hasRole('ROLE_ADMIN')"></div>
+                        <a href="/admin" class="dropdown-item" sec:authorize="hasRole('ROLE_ADMIN')">Admin</a>
+                        <div class="dropdown-divider" sec:authorize="isAuthenticated()"></div>
+                        <a href="/logout" class="dropdown-item" sec:authorize="isAuthenticated()">Logout</a>
+                      </div>
+          </li>
+         
+          <li class="button-container nav-item iframe-extern">
+            <a href="/cart" target="_blank" class="btn  btn-danger   btn-round btn-block">
+              <i class="material-icons">shopping_cart</i> Cart
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+</html>

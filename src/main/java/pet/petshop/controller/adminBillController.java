@@ -58,6 +58,7 @@ public class adminBillController {
 		bill.save(b);
 		return "redirect:/adminbill";
 	}
+	
 	@RequestMapping("/Bill/{id}")
 	public String Billinfolist(Model model,@PathVariable(name = "id") int id) {
 		List<BillInfo> billinfo = bis.BillinfoByBill(bill.get(id));

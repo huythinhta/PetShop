@@ -24,12 +24,9 @@
 							<div class="card-body text-center">
 								<h4 class="card-title">
 									<a th:href="@{'/sanpham/' + ${pr.id}}" th:text="${pr.name}"></a>
-									
+									<p class="description" th:text="${#strings.abbreviate(pr.description,100)}"></p>
 								</h4>
-								<p class="card-description">The structured shoulders and
-									sleek detailing ensure a sharp silhouette. Team it with a silk
-									pocket square and leather loafers.</p>
-							</div>
+								</div>
 							<div class="card-footer">
 								<div class="price-container">
 									<span class="price price-new" th:text="${#numbers.formatDecimal(pr.price, 3, 'POINT', 0, 'POINT')}"></span><sup> &#8363;</sup>
@@ -337,18 +334,14 @@
 									data-colored-shadow="false">
 									<div class="card-header card-header-image">
 										<a href="#"> <img th:src="@{'../assets/img/' + ${pr.images}}"
-											alt="..." style="min-height: 320px">
+											alt="..." style="min-height: 320px;max-height: 320px">
 										</a>
 									</div>
 									<div class="card-body">
 										<a  th:href="@{'/sanpham/' + ${pr.id}}">
-										<h4 class="card-title" th:text="${pr.id}"></h4>
-											<h4 class="card-title" th:text="${pr.name}"></h4>
+										<h4 class="card-title" th:text="${pr.name}"></h4>
 										</a>
-										<p class="card-description" >Don't be scared of the truth
-											because we need to restart the human foundation in truth And
-											I love you like Kanye loves Kanye I love Rick Owens’ bed
-											design but the back is...</p>
+										<p class="description" th:text="${#strings.abbreviate(pr.description,100)}"></p>
 									</div>
 									<div class="card-footer justify-content-between">
 										<div class="price-container">

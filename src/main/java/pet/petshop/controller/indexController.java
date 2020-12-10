@@ -50,6 +50,7 @@ public class indexController {
 	@RequestMapping(value = "/shop", method = RequestMethod.GET)
 	public String shop(ModelMap model) {
 		model.put("product", ps.listAll());
+		
 		return "index/shop";
 	}
 

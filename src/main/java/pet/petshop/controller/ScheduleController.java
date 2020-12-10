@@ -34,14 +34,14 @@ public class ScheduleController {
 	
 	@RequestMapping("/order")
 	public String order(@ModelAttribute("schedule") Schedule sch) throws ParseException {
-//		String pattern = "yyyy-MM-dd";
-//		SimpleDateFormat format = new SimpleDateFormat(pattern);
-//		Date date = new Date();
-//		String now = format.format(date);
-//		String datecheckin = format.format(sch.getDatacheckin());
+		String pattern = "yyyy-MM-dd";
+		SimpleDateFormat format = new SimpleDateFormat(pattern);
+		Date date = new Date();
+		String now = format.format(date);
+		String datecheckin = format.format(sch.getDatacheckin());
 		
-//		Schedule schedule = new Schedule(sch.getIdservice(), sch.getIduser(), format.parse(now), format.parse(source), sch.getNote());
-//		scs.save(schedule);
+	//	Schedule schedule = new Schedule(sch.getIdservice(), sch.getIduser(), format.parse(now), format.parse(source), sch.getNote());
+	//	scs.save(schedule);
 		return "index";
 	}
 }

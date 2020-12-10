@@ -17,7 +17,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 import pet.petshop.entity.Blog;
+import pet.petshop.entity.Blogcategories;
 import pet.petshop.entity.Services;
+import pet.petshop.service.BlogCategoriesService;
 import pet.petshop.service.BlogService;
 import pet.petshop.utils.FileUploadUtil;
 
@@ -26,6 +28,10 @@ import pet.petshop.utils.FileUploadUtil;
 public class BlogController {
 	@Autowired
 	private BlogService bs;
+	
+	@Autowired
+	private BlogCategoriesService bcs;
+	
 	@RequestMapping("/blogindex")
 	public String viewHomePage(Model model) {
 		List<Blog> listblog=bs.listALL();
@@ -36,7 +42,11 @@ public class BlogController {
 	@RequestMapping("/newblog")
 	public String showNewBlogForm(Model model) {
 		Blog blog = new Blog();
+		
 		model.addAttribute("blog",blog);
+		
+		List<Blogcategories> cate = bcs.listALL();
+		model.addAttribute("cate", cate);
 		return "admin/blog/blog_add";
 	}
 	
@@ -56,8 +66,10 @@ public class BlogController {
 	}
 	
 	@RequestMapping("/editblog/{id}")
-	public ModelAndView showEditBlog(@PathVariable(name = "id")Integer id) {
+	public ModelAndView showEditBlog(Model model,@PathVariable(name = "id")Integer id) {
 		ModelAndView mav = new ModelAndView("admin/blog/blog_edit");
+		List<Blogcategories> cate = bcs.listALL();
+		model.addAttribute("cate", cate);
 		Blog blog = bs.get(id);
 		mav.addObject("blog", blog);
 		return mav;

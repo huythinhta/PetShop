@@ -337,18 +337,15 @@
 									data-colored-shadow="false">
 									<div class="card-header card-header-image">
 										<a href="#"> <img th:src="@{'../assets/img/' + ${pr.images}}"
-											alt="..." style="min-height: 320px">
+											alt="..." style="height: 320px">
 										</a>
 									</div>
 									<div class="card-body">
 										<a  th:href="@{'/sanpham/' + ${pr.id}}">
-										<h4 class="card-title" th:text="${pr.id}"></h4>
+										
 											<h4 class="card-title" th:text="${pr.name}"></h4>
 										</a>
-										<p class="card-description" >Don't be scared of the truth
-											because we need to restart the human foundation in truth And
-											I love you like Kanye loves Kanye I love Rick Owens’ bed
-											design but the back is...</p>
+										
 									</div>
 									<div class="card-footer justify-content-between">
 										<div class="price-container">
@@ -360,17 +357,45 @@
 								
 								<!-- end card -->
 							</div>
-							<div class="col-md-3 ml-auto mr-auto">
-								<button rel="tooltip" class="btn btn-rose btn-round"
-									data-original-title="" title="" >Load more...</button>
-							</div>
+							
 						</div>
 					</div>
+					<div style="margin-left: 200px">
+								Tổng [[${totalItemsInpage}]] trên [[${totalItems}]] sản phẩm -
+								Trang [[${currentpage}]] / [[${totalPages}]] :
+								&nbsp;
+								<a th:if="${currentpage > 1}" th:href="@{/shop-page/1}">Đầu trang</a>
+								<span th:unless="${currentpage > 1}">Đầu trang</span>
+								&nbsp;
+								<a th:if="${currentpage > 1}" th:href="@{'/shop-page/' + ${currentpage - 1}}">Trang trước</a>
+								<span th:unless="${currentpage > 1}">Trang trước</span>
+								&nbsp;
+								<span
+									th:each="i: ${#numbers.sequence(1, totalPages)}">
+									<span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<a 
+										th:if="${i != currentpage}"
+										th:href="@{'/shop-page/' + ${i}}">[[${i}]]
+									</a>
+										<span th:unless="${i != currentpage}">[[${i}]]</span>
+								</span>
+								
+								</span>
+								&nbsp;
+								
+								&nbsp;
+								<a th:if="${currentpage < totalPages}" th:href="@{'/shop-page/' + ${currentpage + 1}}">Trang sau</a>
+								<span th:unless="${currentpage < totalPages}">Trang sau</span>
+								&nbsp;
+								<a th:if="${currentpage < totalPages}" th:href="@{'/shop-page/' + ${totalPages}}">Trang cuối</a>
+								<span th:unless="${currentpage < totalPages}">Trang cuối</span>
+							</div>
 				</div>
 				<br>
 				
 			</div>
 		</div>
+		
 		<!-- section -->
 	</div>
 

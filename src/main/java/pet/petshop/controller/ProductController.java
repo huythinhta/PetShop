@@ -4,8 +4,11 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.validation.Valid;
+import javax.websocket.server.PathParam;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -33,16 +36,42 @@ public class ProductController {
 
     @RequestMapping("/product")
     public String viewHomePage(Model model, @RequestParam(value = "search", defaultValue = "", required = false) String search) {
-        List<Product> product = null;
+        Iterable<Product> product = null;
         if (search.isEmpty()) {
-            product = ps.listAll();
+            return listByPageAdminProduct(model, 1, "name", "asc");
         } else {
             product = ps.searchByName(search);
         }
         model.addAttribute("product", product);
         return "admin/product/index_product";
     }
-
+    
+    @GetMapping("/product-page/{pageNumber}")
+	public String listByPageAdminProduct(Model model,
+			@PathVariable("pageNumber") int currentpage,
+			@Param("sortField") String sortField,
+			@Param("sortDir") String sortDir) {
+		
+		Page<Product> page = ps.listAllPageAdminProduct(currentpage, sortField, sortDir);
+		long totalItems = page.getTotalElements();
+		int totalPages = page.getTotalPages();
+		int totalItemsInpage = page.getNumberOfElements();
+		
+		List<Product> listProducts = page.getContent();
+		model.addAttribute("currentpage", currentpage);
+		model.addAttribute("product", listProducts);
+		model.addAttribute("sortField", sortField);
+		model.addAttribute("sortDir", sortDir);
+		model.addAttribute("totalItems",totalItems);
+		model.addAttribute("totalPages",totalPages);
+		model.addAttribute("totalItemsInpage",totalItemsInpage);
+		
+		String reverseSortDir = sortDir.equals("asc") ? "desc"  : "asc" ;
+		model.addAttribute("reverseSortDir",reverseSortDir);
+		return "admin/product/index_product";
+		
+	}
+    
     @RequestMapping("/newproduct")
     public String showNewProductForm(Model model) {
         Product product = new Product();

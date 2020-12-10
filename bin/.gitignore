@@ -31,6 +31,8 @@ build/
 
 ### VS Code ###
 .vscode/
+/.gitignore
+/.mvn/
 /PetShop/
 /database.sql
 /mvnw

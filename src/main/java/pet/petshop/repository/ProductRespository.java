@@ -1,13 +1,14 @@
 package pet.petshop.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+//import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
 import pet.petshop.entity.Product;
 
-import java.util.List;
 
-public interface ProductRespository extends JpaRepository<Product, Integer> {
 
-    List<Product> getProductsByNameContains(String search);
+public interface ProductRespository extends PagingAndSortingRepository<Product, Integer> {
 
+    Iterable<Product> getProductsByNameContains(String search);
+   
 }

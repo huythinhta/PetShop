@@ -10,11 +10,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
+
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
+
 import javax.validation.constraints.Size;
 
 @Entity
@@ -23,106 +22,107 @@ public class Product {
 	@Column(name = "id")
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-	
+	private Integer id;
+
 	@Column(name = "cate")
-    private Integer cate;
-	
+	private Integer cate;
+
 	@Column(name = "name")
-	//@Pattern(regexp="^[a-zA-Z0-9\s]*$", message = "Không chứa kí tự đặc biệt")
+	// @Pattern(regexp="^[a-zA-Z0-9\s]*$", message = "Không chứa kí tự đặc biệt")
 	@Size(min = 3, max = 30, message = "Ít nhất 3 kí tự, nhiều nhất 30 kí tự")
 	@NotBlank(message = "Hãy nhập tên sản phẩm")
-    private String name;
-	
+	private String name;
+
 	@Column(name = "brand")
-	//@Pattern(regexp="^[a-zA-Z0-9\s]*$", message = "Không chứa kí tự đặc biệt")
+	// @Pattern(regexp="^[a-zA-Z0-9\s]*$", message = "Không chứa kí tự đặc biệt")
 	@Size(min = 3, max = 30, message = "Ít nhất 3 kí tự, nhiều nhất 30 kí tự")
 	@NotBlank(message = "Hãy nhập hãng của sản phẩm")
-    private String brand;
-	
-	@Column(name="images")
+	private String brand;
 
-    private String images;
-	
+	@Column(name = "images")
+
+	private String images;
+
 	@Column(name = "status")
-    private Boolean status;
-	
+	private Boolean status;
+
 	@Column(name = "price")
 	@NotNull(message = "Hãy nhập giá")
-    private Integer price;
-	
+	private Integer price;
+
 	@Column(name = "discount")
-    private Integer discount;
-	
-	@OneToMany(mappedBy = "product",cascade = CascadeType.ALL)
+	private Integer discount;
+
+	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
 	private Collection<BillInfo> billInfo;
-    public Product() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
-    public Integer getId() {
-        return id;
-    }
+	public Product() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+	public Integer getId() {
+		return id;
+	}
 
-    public Integer getCate() {
-        return cate;
-    }
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-    public void setCate(Integer cate) {
-        this.cate = cate;
-    }
+	public Integer getCate() {
+		return cate;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public void setCate(Integer cate) {
+		this.cate = cate;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public String getBrand() {
-        return brand;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public void setBrand(String brand) {
-        this.brand = brand;
-    }
+	public String getBrand() {
+		return brand;
+	}
 
-    public String getImages() {
-        return images;
-    }
+	public void setBrand(String brand) {
+		this.brand = brand;
+	}
 
-    public void setImages(String images) {
-        this.images = images;
-    }
+	public String getImages() {
+		return images;
+	}
 
-    public Boolean getStatus() {
-        return status;
-    }
+	public void setImages(String images) {
+		this.images = images;
+	}
 
-    public void setStatus(Boolean status) {
-        this.status = status;
-    }
+	public Boolean getStatus() {
+		return status;
+	}
 
-    public Integer getPrice() {
-        return price;
-    }
+	public void setStatus(Boolean status) {
+		this.status = status;
+	}
 
-    public void setPrice(Integer price) {
-        this.price = price;
-    }
+	public Integer getPrice() {
+		return price;
+	}
 
-    public Integer getDiscount() {
-        return discount;
-    }
+	public void setPrice(Integer price) {
+		this.price = price;
+	}
 
-    public void setDiscount(Integer discount) {
-        this.discount = discount;
-    }
+	public Integer getDiscount() {
+		return discount;
+	}
+
+	public void setDiscount(Integer discount) {
+		this.discount = discount;
+	}
 
 }

@@ -74,59 +74,97 @@
                     <h4 class="panel-title">Basic example</h4>
                 </div>
                 <div class="panel-body">
-                    <div class="table-responsive">
-                        <table id="example" class="display table"
-                               style="width: 100%; cellspacing: 0;">
-                            <thead>
-                            <tr>
-                                <th>Product id</th>
-                                <th>Categories id</th>
-                                <th>Name</th>
-                                <th>Brand</th>
-                                <th>Images</th>
-                                <th>status</th>
-                                <th>discount</th>
-                                <th>Action</th>
-                                <th></th>
-                            </tr>
-                            </thead>
-                            <tfoot>
-                            <tr>
-                                <th>Product id</th>
-                                <th>Categories id</th>
-                                <th>Name</th>
-                                <th>Brand</th>
-                                <th>Images</th>
-                                <th>status</th>
-                                <th>discount</th>
-                                <th>Action</th>
-                                <th></th>
-                            </tr>
-                            </tfoot>
-                            <tbody>
-                            <tr th:if="${product.size() == 0}">
-                                <td colspan="10">Không tìm thấy sản phẩm</td>
-                            </tr>
-                            <tr th:each="pr : ${product}" th:if="${product.size() > 0}">
-                                <td th:text="${pr.id}">pr id</td>
-                                <td th:text="${pr.cate}">pr id</td>
-                                <td th:text="${pr.name}">Category id</td>
-                                <td th:text="${pr.brand}">Date</td>
-                                <td th:text="${pr.images}">Username</td>
-                                <td th:text="${pr.status}">Images</td>
-                                <td th:text="${pr.price}">Images</td>
-                                <td th:text="${pr.discount}">Content</td>
-                                <td>
-                                    <a th:href="@{'/editproduct/' + ${pr.id}}">edit</a>
-                                </td>
-                                <td>
-                                    <a th:href="@{'/deleteproduct/' + ${pr.id}}">delete</a>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+						<div class="table-responsive">
+							<table id="example" class="display table"
+								style="width: 100%; cellspacing: 0;">
+								<thead>
+									<tr>
+										<th><a th:href="@{'/product-page/' + ${currentpage} + '?sortField=id&sortDir=' + ${reverseSortDir}}">
+										Product id</a></th>
+										<th>Categories id</th>
+										<th><a th:href="@{'/product-page/' + ${currentpage} + '?sortField=name&sortDir=' + ${reverseSortDir}}">
+										Name</a></th>
+										<th><a th:href="@{'/product-page/' + ${currentpage} + '?sortField=brand&sortDir=' + ${reverseSortDir}}">
+										Brand</a></th>
+										<th><a th:href="@{'/product-page/' + ${currentpage} + '?sortField=images&sortDir=' + ${reverseSortDir}}">
+										Images</a></th>
+										<th><a th:href="@{'/product-page/' + ${currentpage} + '?sortField=status&sortDir=' + ${reverseSortDir}}">
+										status</a></th>
+										<th><a th:href="@{'/product-page/' + ${currentpage} + '?sortField=price&sortDir=' + ${reverseSortDir}}">
+										
+										price</a></th>
+										<th><a th:href="@{'/product-page/' + ${currentpage} + '?sortField=discount&sortDir=' + ${reverseSortDir}}">
+										
+										discount</a></th>
+										<th rowspan="2">Action</th>
+										<th></th>
+									</tr>
+								</thead>
+								<tfoot>
+									<tr>
+										<th>Product id</th>
+										<th>Categories id</th>
+										<th>Name</th>
+										<th>Brand</th>
+										<th>Images</th>
+										<th>status</th>
+										<th>price</th>
+										<th>discount</th>
+										<th rowspan="2">Action</th>
+										<th></th>
+									</tr>
+								</tfoot>
+								<tbody>
+									<tr th:if="${product.size() == 0}">
+										<td colspan="10">Không tìm thấy sản phẩm</td>
+									</tr>
+									<tr th:each="pr : ${product}" th:if="${product.size() > 0}">
+										<td th:text="${pr.id}">pr id</td>
+										<td th:text="${pr.cate}">pr id</td>
+										<td th:text="${pr.name}">Category id</td>
+										<td th:text="${pr.brand}">Date</td>
+										<td th:text="${pr.images}">Username</td>
+										<td th:text="${pr.status}">Images</td>
+										<td th:text="${pr.price}">Giás</td>
+										<td th:text="${pr.discount}">Content</td>
+										<td><a th:href="@{'/editproduct/' + ${pr.id}}">edit</a></td>
+										<td><a th:href="@{'/deleteproduct/' + ${pr.id}}">delete</a>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+							<div style="margin-left: 500px">
+								Tổng [[${totalItemsInpage}]] trên [[${totalItems}]] sản phẩm -
+								Trang [[${currentpage}]] / [[${totalPages}]] :
+								&nbsp;
+								<a th:if="${currentpage > 1}" th:href="@{'/product-page/1' + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Đầu trang</a>
+								<span th:unless="${currentpage > 1}">Đầu trang</span>
+								&nbsp;
+								<a th:if="${currentpage > 1}" th:href="@{'/product-page/' + ${currentpage - 1} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Trang trước</a>
+								<span th:unless="${currentpage > 1}">Trang trước</span>
+								&nbsp;
+								<span
+									th:each="i: ${#numbers.sequence(1, totalPages)}">
+									<span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<a 
+										th:if="${i != currentpage}"
+										th:href="@{'/product-page/' + ${i}} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} ">[[${i}]]
+									</a>
+										<span th:unless="${i != currentpage}">[[${i}]]</span>
+								</span>
+								
+								</span>
+								&nbsp;
+								
+								&nbsp;
+								<a th:if="${currentpage < totalPages}" th:href="@{'/product-page/' + ${currentpage + 1} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Trang sau</a>
+								<span th:unless="${currentpage < totalPages}">Trang sau</span>
+								&nbsp;
+								<a th:if="${currentpage < totalPages}" th:href="@{'/product-page/' + ${totalPages} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Trang cuối</a>
+								<span th:unless="${currentpage < totalPages}">Trang cuối</span>
+							</div>
+						</div>
+					</div>
             </div>
         </div>
     </div>

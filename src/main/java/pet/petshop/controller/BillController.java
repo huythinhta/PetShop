@@ -44,6 +44,7 @@ public class BillController {
 		Bill bill = new Bill();
 		bill.setDate(format.parse(now));
 		bill.setUser(user);
+		bill.setUserid(user.getId());
 		bill.setTotalprice(total);
 		List<BillInfo> bifs = new ArrayList<BillInfo>();
 		List<Item> cart = (List<Item>) session.getAttribute("cart");

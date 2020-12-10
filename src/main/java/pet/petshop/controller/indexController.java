@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
 
 import pet.petshop.entity.User;
 import pet.petshop.service.BlogService;
-import pet.petshop.service.ProductDetailService;
+
 import pet.petshop.service.ProductService;
 import pet.petshop.service.ServiceServices;
 import pet.petshop.service.UserServiceImpl;
@@ -26,9 +26,7 @@ import pet.petshop.service.UserServiceImpl;
 public class indexController {
 	@Autowired
 	private ProductService ps;
-	@Autowired
-	private ProductDetailService pds;
-
+	
 	@Autowired
 	private ServiceServices ss;
 
@@ -53,7 +51,7 @@ public class indexController {
 	@RequestMapping(value = "/shop", method = RequestMethod.GET)
 	public String shop(ModelMap model) {
 		model.put("product", ps.listAll());
-		model.put("productdetail", pds.listALL());
+		
 		return "index/shop";
 	}
 

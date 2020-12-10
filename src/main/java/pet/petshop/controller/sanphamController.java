@@ -8,9 +8,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import pet.petshop.entity.Product;
 import pet.petshop.entity.Productcategories;
-import pet.petshop.entity.Productdetail;
+
 import pet.petshop.service.ProductCategoryService;
-import pet.petshop.service.ProductDetailService;
+
 import pet.petshop.service.ProductService;
 
 @Controller
@@ -18,8 +18,7 @@ public class sanphamController {
 	@Autowired
     private ProductService ps;
 	
-	@Autowired
-	private ProductDetailService pds;
+	
 	
 	
 	
@@ -27,12 +26,7 @@ public class sanphamController {
 	    public ModelAndView xemsanpham(@PathVariable(name = "id") Integer id) {
 	        ModelAndView mav = new ModelAndView("shop/thongtinsanpham");
 	        Product product = ps.get(id);
-	        Productdetail productdetail = pds.get(id);
-	        
 	        mav.addObject("product", product);
-	        mav.addObject("productdetail", productdetail);
-	       
-
 	        return mav;
 	    }
 }

@@ -65,9 +65,9 @@
 										<td th:text="${user.name}">role</td>
 										<td th:text="${user.phone}">role</td>
 										<td th:text="${user.address}">role</td>
-										<td><a th:href="@{'/editUser/' + ${user.id}}">Edit</a>
-										<td>
-										<td><a th:href="@{'/deleteUser/' + ${user.id}}">delete</a></td>
+										<td><a th:href="@{'/editUser/' + ${user.id}}">Edit</a></td>
+										<td><a th:href="@{'/Updatepass/' + ${user.id}}">Reset</a></td>
+										<td><a th:href="@{'/deleteUser1/' + ${user.id}}">delete</a></td>
 									</tr>
 								</tbody>
 							</table>

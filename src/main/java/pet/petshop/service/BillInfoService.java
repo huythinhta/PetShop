@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import pet.petshop.entity.Bill;
 import pet.petshop.entity.BillInfo;
 import pet.petshop.repository.BillInfoRepository;
 
@@ -29,6 +30,9 @@ public class BillInfoService {
 	
 	public void delete(int id) {
 		bir.deleteById(id);
+	}
+	public List<BillInfo> BillinfoByBill(Bill bill){
+		return bir.findByBill(bill);
 	}
 
 }

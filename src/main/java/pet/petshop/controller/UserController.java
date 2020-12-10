@@ -2,7 +2,10 @@ package pet.petshop.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -11,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import pet.petshop.entity.Bill;
 import pet.petshop.entity.User;
 import pet.petshop.service.UsersService;
 
@@ -19,6 +23,11 @@ import pet.petshop.service.UsersService;
 public class UserController {
 	@Autowired
 	private UsersService us;
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder() {
+
+	    return new BCryptPasswordEncoder();
+	}
 	
 	@RequestMapping("/user")
 	public String index(Model model) {
@@ -51,9 +60,23 @@ public class UserController {
 	    return mav;
 	}
 	
+	
+	@RequestMapping(value = "/Updatepass/{id}")
+	public String resetUser(@PathVariable(name = "id") int id) {
+		User user = us.get(id);
+		String encodepass = passwordEncoder().encode("555");
+		user.setPassword(encodepass);
+	    us.save(user);
+	    return "redirect:/user";
+	}
+	
 	@RequestMapping("/deleteUser/{id}")
-	public String deleteProduct(@PathVariable(name = "id") int id) {
+	public String deleteProduct(HttpSession session,@PathVariable(name = "id") int id) {
+		User user = (User) session.getAttribute("user");
+		if(user.getId()!=id)
 	    us.delete(id);
 	    return "redirect:/user";       
 	}
+	
+	
 }

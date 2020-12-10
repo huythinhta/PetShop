@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import pet.petshop.entity.Bill;
+import pet.petshop.entity.User;
 import pet.petshop.repository.BillRepository;
 
 @Service
@@ -30,6 +31,10 @@ public class BillService {
 	public void delete(int id) {
 		br.deleteById(id);
 	}
-
+	
+	public List<Bill> BillByUser(User user){
+		return br.findByUser(user);
+	}
+	 
 	
 }

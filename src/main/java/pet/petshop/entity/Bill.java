@@ -23,7 +23,7 @@ public class Bill {
 	private int totalprice;
 	@OneToMany(mappedBy = "bill",cascade = CascadeType.ALL)
 	private Collection<BillInfo> billInfo;
-	
+	private int userid;
 	@ManyToOne
 	@JoinColumn(name = "userid",insertable=false, updatable=false )
 	private User user;
@@ -31,6 +31,14 @@ public class Bill {
 		// TODO Auto-generated constructor stub
 	}
 	
+	public int getUserid() {
+		return userid;
+	}
+
+	public void setUserid(int userid) {
+		this.userid = userid;
+	}
+
 	public int getId() {
 		return id;
 	}

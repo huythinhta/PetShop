@@ -7,14 +7,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import pet.petshop.entity.Blog;
-
+import pet.petshop.entity.User;
 import pet.petshop.service.BlogService;
+import pet.petshop.service.UsersService;
 
 @Controller
 public class xemBlogController {
 	
 	@Autowired
 	private BlogService bs;
+	
+	private UsersService us;
 	
 	@RequestMapping("/blog/{id}")
     public ModelAndView xemsanpham(@PathVariable(name = "id") Integer id) {
@@ -23,5 +26,7 @@ public class xemBlogController {
         mav.addObject("blog", blog);
         return mav;
     }
+	
+	
 
 }

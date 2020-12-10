@@ -68,6 +68,7 @@ public class CartController {
 		@SuppressWarnings("unchecked")
 		List<Item> cart = (List<Item>) session.getAttribute("cart");
 		int index = isExists(id, cart);
+		
 		if(cart.get(index).getQuantity()==1) {
 			cart.remove(index);
 		}else
@@ -75,16 +76,6 @@ public class CartController {
 			int quantity = cart.get(index).getQuantity() - 1;
 			cart.get(index).setQuantity(quantity);
 		}
-		session.setAttribute("cart", cart);
-		return "redirect:/cart";
-	}
-	@RequestMapping(value = "delete/{id}", method = RequestMethod.GET)
-	public String delete(@PathVariable("id") int id,  HttpSession session) {
-		@SuppressWarnings("unchecked")
-		List<Item> cart = (List<Item>) session.getAttribute("cart");
-		int index = isExists(id, cart);
-			cart.remove(index);
-		
 		session.setAttribute("cart", cart);
 		return "redirect:/cart";
 	}

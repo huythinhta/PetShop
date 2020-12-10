@@ -39,4 +39,30 @@ public class adminBillController {
 		return "admin/bill/billinfo";
 	}
 	
+	@RequestMapping("/UpdateBillStatus/{id}")
+	public String UpdateBill(@PathVariable(name = "id") int id) {
+		Bill b = bill.get(id);
+		switch (b.getStatus()) {
+		case 0:
+			b.setStatus(b.getStatus()+1);
+			break;
+		case 1:
+			b.setStatus(b.getStatus()+1);
+			break;
+		case 2:
+			b.setStatus(b.getStatus()+1);
+			break;
+		default:
+			b.setStatus(0);;
+		}
+		bill.save(b);
+		return "redirect:/adminbill";
+	}
+	@RequestMapping("/Bill/{id}")
+	public String Billinfolist(Model model,@PathVariable(name = "id") int id) {
+		List<BillInfo> billinfo = bis.BillinfoByBill(bill.get(id));
+		model.addAttribute("billinfo",billinfo);
+		return "admin/bill/billinfo";
+	}
+
 }

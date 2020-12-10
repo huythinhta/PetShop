@@ -44,10 +44,10 @@ public class ProductController {
     ) {
         List<Product> product = null;
 
-        if(!category.isEmpty() || !status.isEmpty()){
+        if (!category.isEmpty() || !status.isEmpty()) {
             product = ps.getListProductByFilter(
                     search,
-                    Integer.parseInt(category),
+                    !category.isEmpty() ? Integer.parseInt(category) : -1,
                     status.equals("1")
             );
         } else {
@@ -56,6 +56,10 @@ public class ProductController {
 
         model.addAttribute("catelogiesFilter", pdc.listALL());
         model.addAttribute("product", product);
+        model.addAttribute("search", search);
+        model.addAttribute("category", category);
+        model.addAttribute("status", status);
+
         return "admin/product/index_product";
     }
 
@@ -68,7 +72,10 @@ public class ProductController {
 
 
     @RequestMapping(value = "/saveproduct", method = RequestMethod.POST)
-    public String saveProduct(@ModelAttribute("product") @Valid Product product, @RequestParam("image") MultipartFile multipartFile, BindingResult bindingResult
+    public String saveProduct(
+            @ModelAttribute("product") @Valid Product product,
+            @RequestParam("image") MultipartFile multipartFile,
+            BindingResult bindingResult
     ) throws IOException {
         if (bindingResult.hasErrors() == true) {
             return "product/product_add";
@@ -97,7 +104,6 @@ public class ProductController {
         ps.delete(id);
         return "redirect:/product";
     }
-
 
 }
 

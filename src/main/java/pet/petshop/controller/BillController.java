@@ -30,6 +30,8 @@ public class BillController {
 	private BillService bs;
 	@Autowired
 	private BillInfoService bis;
+	
+	
 
 	@RequestMapping("/charge")
 	public String Charge(HttpSession session) throws ParseException {
@@ -41,6 +43,7 @@ public class BillController {
 		int total = 0;
 		Bill bill = new Bill();
 		bill.setDate(format.parse(now));
+		bill.setUser(user);
 		bill.setUserid(user.getId());
 		bill.setTotalprice(total);
 		List<BillInfo> bifs = new ArrayList<BillInfo>();
@@ -49,16 +52,18 @@ public class BillController {
 			Item item = cart.get(i);
 			total += item.getQuantity() * item.getProduct().getPrice();
 			BillInfo bi = new BillInfo();
-			bi.setIdproduct(item.getProduct().getId());
+			bi.setProduct(item.getProduct());
 			bi.setCountItem(item.getQuantity());
 			bi.setBill(bill);
 			bifs.add(bi);
 		}
 		bill.setTotalprice(total);
 		bs.save(bill);
+		System.out.print(bill);
 		for (int i = 0; i < bifs.size(); i++) {
 			bis.save(bifs.get(i));
 		}
+		session.removeAttribute("cart");
 		return "index/index";
 	}
 

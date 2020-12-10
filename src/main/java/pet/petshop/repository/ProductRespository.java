@@ -4,12 +4,13 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import pet.petshop.custom_repo.ProductCustomRepo;
 import pet.petshop.entity.Product;
 
 import java.util.List;
 
 
-public interface ProductRespository extends JpaRepository<Product, Integer> {
+public interface ProductRespository extends JpaRepository<Product, Integer>, ProductCustomRepo {
 
     List<Product> getProductsByNameContains(String search);
 
@@ -18,5 +19,4 @@ public interface ProductRespository extends JpaRepository<Product, Integer> {
             @Param("name") String search,
             @Param("category") Integer category,
             @Param("status") Boolean status);
-
 }

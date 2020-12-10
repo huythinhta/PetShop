@@ -53,6 +53,7 @@
                                            name="search"
                                            class="form-control input-search"
                                            placeholder="Search..."
+                                           th:value="${search}"
                                     >
                                 </div>
                                 <div class="col-md-1 mx-0">
@@ -62,23 +63,15 @@
                                 </div>
                             </div>
                             <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label for="inputCity">City</label>
-                                    <input type="text" class="form-control" id="inputCity">
-                                </div>
-                                <div class="form-group col-md-4">
+                                <div class="form-group col-md-12">
                                     <label for="category">Category</label>
                                     <select name="category" id="category" class="form-control">
-                                        <option value="" selected>All</option>
-                                        <option th:each="pdc : ${catelogiesFilter}" th:value="${pdc.id}" th:text="${pdc.name}"></option>
-                                    </select>
-                                </div>
-                                <div class="form-group col-md-2">
-                                    <label for="status">Status</label>
-                                    <select name="status" id="status" class="form-control">
-                                        <option value="" selected>All</option>
-                                        <option value="1">True</option>
-                                        <option value="0">False</option>
+                                        <option value="">All</option>
+                                        <option
+                                                th:each="pdc : ${catelogiesFilter}"
+                                                th:value="${pdc.id}"
+                                                th:text="${pdc.name}"}
+                                        />
                                     </select>
                                 </div>
                             </div>
@@ -106,8 +99,9 @@
                                 <th>Name</th>
                                 <th>Brand</th>
                                 <th>Images</th>
-                                <th>status</th>
-                                <th>discount</th>
+                                <th>Status</th>
+                                <th>Price</th>
+                                <th>Discount</th>
                                 <th>Action</th>
                                 <th></th>
                             </tr>
@@ -119,10 +113,10 @@
                                 <th>Name</th>
                                 <th>Brand</th>
                                 <th>Images</th>
-                                <th>status</th>
-                                <th>discount</th>
+                                <th>Status</th>
+                                <th>Price</th>
+                                <th>Discount</th>
                                 <th>Action</th>
-                                <th></th>
                             </tr>
                             </tfoot>
                             <tbody>
@@ -131,12 +125,12 @@
                             </tr>
                             <tr th:each="pr : ${product}" th:if="${product.size() > 0}">
                                 <td th:text="${pr.id}">pr id</td>
-                                <td th:text="${pr.cate}">pr id</td>
+                                <td th:text="${pr.productcategories.name}">pr id</td>
                                 <td th:text="${pr.name}">Category id</td>
                                 <td th:text="${pr.brand}">Date</td>
                                 <td th:text="${pr.images}">Username</td>
                                 <td th:text="${pr.status}">Images</td>
-                                <td th:text="${pr.price}">Images</td>
+                                <td class="text-right" th:text="${#numbers.formatCurrency(pr.price)}">Images</td>
                                 <td th:text="${pr.discount}">Content</td>
                                 <td>
                                     <a th:href="@{'/editproduct/' + ${pr.id}}">edit</a>

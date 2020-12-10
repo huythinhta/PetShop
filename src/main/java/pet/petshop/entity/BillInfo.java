@@ -21,7 +21,10 @@ public class BillInfo {
 	@JoinColumn(name = "idbill" )
 	private Bill bill;
 	
-	private int idproduct;
+	@ManyToOne
+	@JoinColumn(name = "idproduct" )
+	private Product product;
+	
 	
 	@Column(name = "countitem")
 	private int countItem;
@@ -30,6 +33,9 @@ public class BillInfo {
 		// TODO Auto-generated constructor stub
 	}
 	
+	
+
+
 	public int getId() {
 		return id;
 	}
@@ -42,11 +48,14 @@ public class BillInfo {
 	public void setBill(Bill bill) {
 		this.bill = bill;
 	}
-	public int getIdproduct() {
-		return idproduct;
+	
+
+	public Product getProduct() {
+		return product;
 	}
-	public void setIdproduct(int idproduct) {
-		this.idproduct = idproduct;
+
+	public void setProduct(Product product) {
+		this.product = product;
 	}
 
 	public int getCountItem() {
@@ -57,11 +66,6 @@ public class BillInfo {
 		this.countItem = countItem;
 	}
 
-	@Override
-	public String toString() {
-		return "BillInfo [id=" + id + ", bill=" + bill + ", idproduct=" + idproduct + ", countItem=" + countItem + "]";
-	}
-	
 	
 	
 	

@@ -1,10 +1,14 @@
 package pet.petshop.entity;
 
+import java.util.Collection;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Email;
@@ -36,14 +40,79 @@ public class User {
 	@Column(name = "role")
 	private String role;
 	
+	@Column(name = "name")
 	private String name;
-	
+	@Column(name = "phone")
 	private String phone;
-	
+	@Column(name = "address")
 	private String address;
-	
+	@Column(name = "avatar")
 	private String avatar;
 	
+	@OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+	private Collection<Blog> blog;
+	
+	@OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+	private Collection<Schedule> schedule;
+	
+	@OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+	private Collection<Bill> bill;
+	
+	public User() {
+		// TODO Auto-generated constructor stub
+	}
+
+
+
+	public User(
+			@Email(message = "Địa chỉ không hợp lệ") @Pattern(regexp = "^\\s*\\S+\\s*$", message = "Không được để khoảng trắng") @NotBlank(message = "Vui lòng nhập Email") String email,
+			@NotBlank(message = "Vui lòng nhập password") @Pattern(regexp = "^\\s*\\S+\\s*$", message = "Không được để khoảng trắng") String password,
+			String role, String name, String phone, String address) {
+		super();
+		this.email = email;
+		this.password = password;
+		this.role = role;
+		this.name = name;
+		this.phone = phone;
+		this.address = address;
+	}
+
+
+
+
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -76,50 +145,15 @@ public class User {
 		this.avatar = avatar;
 	}
 
-	public User() {
-		
+	public Collection<Bill> getBill() {
+		return bill;
+	}
+
+	public void setBill(Collection<Bill> bill) {
+		this.bill = bill;
 	}
 	
-
-	public User(int id,
-			@Email(message = "Địa chỉ không hợp lệ") @Pattern(regexp = "^\\s*\\S+\\s*$", message = "Không được để khoảng trắng") @NotBlank(message = "Vui lòng nhập Email") String email,
-			@NotBlank(message = "Vui lòng nhập password") @Pattern(regexp = "^\\s*\\S+\\s*$", message = "Không được để khoảng trắng") String password,
-			String role, String name, String phone, String address, String avatar) {
-		super();
-		this.id = id;
-		this.email = email;
-		this.password = password;
-		this.role = role;
-		this.name = name;
-		this.phone = phone;
-		this.address = address;
-		this.avatar = avatar;
-	}
-
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	public String getRole() {
-		return role;
-	}
-	public void setRole(String role) {
-		this.role = role;
-	}
+	
 	
 	
 }

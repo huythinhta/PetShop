@@ -22,8 +22,8 @@ public class ProductService {
         return pr.getProductsByNameContains(search);
     }
 
-    public List<Product> getListProductByFilter(String search, Integer branch, Boolean status) {
-        return pr.getProductsByNameContainsAndBrand(search, branch, status);
+    public List<Product> getListProductByFilter(String search, Integer category, Boolean status) {
+        return pr.filter(search, category, status);
     }
 
     public Product save(Product product) {

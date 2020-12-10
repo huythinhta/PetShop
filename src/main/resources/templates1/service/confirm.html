@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+	xmlns:layout="http://www.w3.org/1999/xhtml"
+	layout:decorate="~{fragments/user/main_layout}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div layout:fragment="content" class="main main-raised">
+		<div class="contactus-1 section-image"
+			style="background-image: url('./assets/img/confirm.jpg')">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-5 ml-auto">
+						<h2 class="title">Get in Touch</h2>
+						<h5 class="description">You need more information? Check what
+							other persons are saying about our product. They are very happy
+							with their purchase.</h5>
+						<table class="table table-bordered"
+							style="table-layout: auto; color: white">
+							<thead class="thead-dark">
+								<tr>
+									<th class="text-right">Dịch vụ</th>
+									<th class="text-right">Loại dịch vụ</th>
+									<th class="text-right">Giá</th>
+									<th class="text-right">Mô tả</th>
+									<th class="text-right">Giảm giá</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:object="${service}">
+									<td class="text-center"><a th:text="${service.name}"></a></td>
+
+									<td th:text="${service.cate.name}" class="text-center"></td>
+									<td class="td-number text-right"
+										th:text="${#numbers.formatDecimal(service.price, 3, 'POINT', 0, 'POINT')}"></td>
+
+									<td class="td-number text-center"
+										th:text="${service.description}"></td>
+									<td class="td-number text-center" th:text="${service.discount}">Giảm
+										giá</td>
+									<td class="td-number"
+										th:text="${#numbers.formatDecimal(price, 3, 'POINT', 0, 'POINT')}"></td>
+
+									<!-- <td class="td-actions"><a
+										th:href="${'/cart/delete/'+item.product.id}" rel="tooltip"
+										data-placement="left" title="Remove item" class="btn btn-link">
+											<i class="material-icons">close</i>
+									</a></td> -->
+								</tr>
+
+
+
+								<tr>
+
+									<td class="td-total text-center" colspan="3">Thành tiền</td>
+									<td colspan="3" class="td-price"
+										th:text="${#numbers.formatDecimal(total, 3, 'POINT', 0, 'POINT')}">
+									</td>
+
+								</tr>
+
+							</tbody>
+						</table>
+
+
+					</div>
+					<div class="col-md-5 ml-auto">
+						<div class="card card-contact">
+							<form  class="form-horizontal" action="#" th:action="@{/order}" th:object="${schedule}" method="post">
+                                        <div class="form-group">
+                                            <label for="input-placeholder" class="col-sm-2 control-label">khách hàng</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" th:field="*{iduser}" th:value="${session.user.id}" >
+                                            </div>
+                                        </div> 
+                                        <div class="form-group">
+                                            <label for="input-placeholder" class="col-sm-2 control-label"></label>
+                                            <div class="col-sm-10">
+                                                <input type="text" th:field="*{idservice}" class="form-control" th:value="${service.id}" >
+                                            </div>
+                                        </div> 
+                                        
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Date</label>
+                                            <div class="col-sm-10">
+                                                <input type="date" th:field="*{datacheckin}" class="form-control date-picker">
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Nội dung</label>
+                                            <div class="col-sm-10">
+                                                
+                                                <textarea class="input-large form-control" id="message" rows="5" th:field="*{note}" placeholder="Nhập nội dung..."></textarea>
+                                            </div>
+                                        </div> 
+                                        <div class="form-group">
+                                            <div class="col-sm-offset-2 col-sm-10">
+                                                <button type="submit" class="btn btn-success">Thêm Blog</button>
+                                            </div>
+                                        </div>
+                                    </form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

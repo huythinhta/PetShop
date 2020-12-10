@@ -323,21 +323,10 @@ INSERT INTO `user` (`id`, `email`, `password`, `role`,`name`,`phone`,`address`) 
 (4, 'minh@gmail.com', '$2a$10$btFJx8zlfGrgED0qGb.QZeDVqHSjeyo9PClrDD3ZPgQv9pEME0dWG', 'ROLE_USER','Phong dep trai','0123456789','68 bui thi xuan'),
 (5, 'thinh@gmail.com', '$2a$10$p/9gNp9/dHSher9UeNRRN.x/S4uNU2/yHHckmJzgtrJqQffBO4zS.', 'ROLE_ADMIN','Phong dep trai','0123456789','68 bui thi xuan');
 
-create table `schedule`
-(
-    idschudle int(11) auto_increment primary key,
-    idservice int(11),
-    iduser int(11),
-    dateorder date,
-    datacheckin date,
-    note nvarchar(200),
-    CONSTRAINT FK_serviceSchudle FOREIGN KEY (idservice) references services(id),
-    CONSTRAINT FK_userSchudle FOREIGN KEY (iduser) references user(id)
-);
+
 --
 -- Indexes for dumped tables
 --
-
 --
 -- Indexes for table `bill`
 --
@@ -382,9 +371,7 @@ ALTER TABLE `productcategories`
 
 --
 -- Indexes for table `productdetail`
---
-ALTER TABLE `productdetail`
-  ADD PRIMARY KEY (`idproduct`);
+
 
 --
 -- Indexes for table `servicecategories`
@@ -497,14 +484,24 @@ ALTER TABLE `product`
 --
 -- Constraints for table `productdetail`
 --
-ALTER TABLE `productdetail`
-  ADD CONSTRAINT `pd_fk` FOREIGN KEY (`idproduct`) REFERENCES `product` (`id`);
 
 --
 -- Constraints for table `services`
 --
 ALTER TABLE `services`
   ADD CONSTRAINT `s_sc_fk` FOREIGN KEY (`cate`) REFERENCES `servicecategories` (`id`);
+  
+  create table `schedule`
+(
+    idschedle int(11) auto_increment primary key,
+    idservice int(11),
+    iduser int(11),
+    dateorder datetime DEFAULT current_timestamp(),
+    datacheckin datetime DEFAULT current_timestamp(),
+    note nvarchar(200),
+    CONSTRAINT FK_serviceSchudle FOREIGN KEY (idservice) references services(id),
+    CONSTRAINT FK_userSchudle FOREIGN KEY (iduser) references user(id)
+);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

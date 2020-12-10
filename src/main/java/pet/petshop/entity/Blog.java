@@ -8,9 +8,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "blog")
 public class Blog {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private Integer cate;
 	private String title;
@@ -18,12 +24,19 @@ public class Blog {
 	private String userid;
 	private String images;
 	private String content;
+	
+	@ManyToOne
+	@JoinColumn(name = "userid",insertable=false, updatable=false )
+	private User user;
+	
+	@ManyToOne
+	@JoinColumn(name = "cate",insertable=false, updatable=false )
+	private Blogcategories blogcategories;
 	public Blog() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	
 	public Integer getId() {
 		return id;
 	}

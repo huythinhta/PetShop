@@ -49,6 +49,11 @@ public class User {
 	@Column(name = "avatar")
 	private String avatar;
 	
+	@OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+	private Collection<Blog> blog;
+	
+	@OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+	private Collection<Schedule> schedule;
 	
 	@OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
 	private Collection<Bill> bill;
@@ -57,8 +62,6 @@ public class User {
 		// TODO Auto-generated constructor stub
 	}
 
-	
-	
 
 
 	public User(
